@@ -1,0 +1,47 @@
+<!--作者:小可 QQ:58529016 Email:anlun214@qq.com,欢迎合作洽谈!-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flash2AnnieEngine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
+    <!--如果需要往qq里分享则需要开启下面三个属性-->
+    <!--<meta itemprop="name" content="Flash2x开发神器!">-->
+    <!--<meta itemprop="description" content="用Flash2x开发Html5项目,让制作更简单,让动画更高效!">-->
+    <!--<meta itemprop="image" content="http://web.flash2x.org/Public/images/Flash2xLogo.png">-->
+    <script src="libs2/annieCore.min.js"></script>
+    <!--如果有用到annieUI组件类,则需要开启下面的js-->
+    <script src="libs2/annieUI.min.js"></script>
+    <script src="libs2/zepto.min.js"></script>
+    <script src="libs2/downloadApp.js"></script>
+    <script src="libs2/security.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            border: 0px;
+            overflow: hidden;
+            position: absolute;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+<script src="output.js"></script>
+<!--如果不想canvas全屏而是作为html中的一个标签,请设置div的style.width和style.height为实际值如<div id="annieEngine" style="width:320px;height:576px;line-height:0;font-size:0"></div>-->
+<div id="annieEngine" style="line-height:0;font-size:0"></div>
+<script>
+    var gameId = 1;
+    var CFG= {
+        appInfo :{"appId":1,"earnCreditsUrl":"https://www.baidu.com/","loginProgram":"","open":false,"openLogin":false},
+        gameInfo : {"id":1317,"oaId":19951,"offDate":"2018-04-17 11:00","openTotalScoreSwitch":false,"rankPrize":true,"skincontent":""},
+        extra : {"embedDomain":"//embedlog.duibatest.com.cn"}
+    }
+    function resolve(a) {
+        var b = eval(a);
+        return b;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "name": "LimitTransport",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js --host 0.0.0.0",
+    "pub": "webpack --config webpack.prod.js && gulp packToOne"
+  },
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverage": true,
+    "mapCoverage": true
+  },
+  "devDependencies": {
+    "base64-min": "^1.2.0",
+    "del": "^2.2.1",
+    "fs": "0.0.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-pngquant": "^1.0.10",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sequence": "^0.4.5",
+    "gulp-uglify": "^1.5.4",
+    "merge-stream": "^1.0.0",
+    "mock-webpack-plugin": "^2.0.0",
+    "path": "^0.12.7",
+    "ali-oss": "^4.11.4",
+    "chalk": "^2.3.0",
+    "co": "^4.6.0",
+    "progress": "^2.0.0",
+    "@types/jquery": "^3.3.1",
+    "ts-loader": "^4.0.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2",
+    "webpack": "^4.1.0",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.1.0",
+    "webpack-merge": "^4.1.2"
+  },
+  "dependencies": {
+    "jest": "^22.0.2",
+    "resolve-cwd": "^2.0.0",
+    "ali-oss": "^4.11.4",
+    "chalk": "^2.3.0",
+    "co": "^4.6.0",
+    "progress": "^2.0.0"
+  }
+}

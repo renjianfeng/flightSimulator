@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "removeComments": true,
+    "noEmitOnError":true,
+    "outDir":"dist"
+  },
+  "exclude": [
+    "node_modules"
+   /* "dist",
+    "types",
+    "test"*/
+  ],
+  "types": [
+    "babylonjs",
+    "anotherAwesomeDependency"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "author": {
+    "name": "David CATUHE"
+  },
+  "contributors": [
+    "David ROUSSET",
+    "Sebastien VANDENBERGHE",
+    "Raanan Weber"
+  ],
+  "name": "babylonjs",
+  "description": "Babylon.js is a JavaScript 3D engine based on webgl.",
+  "version": "3.2.0-beta.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BabylonJS/Babylon.js.git"
+  },
+  "main": "babylon.js",
+  "files": [
+    "package.json",
+    "babylon.d.ts",
+    "es6.js",
+    "babylon.js",
+    "babylon.max.js",
+    "babylon.worker.js",
+    "Oimo.js",
+    "readme.md"
+  ],
+  "typings": "babylon.d.ts",
+  "keywords": [
+    "3D",
+    "javascript",
+    "html5",
+    "webgl"
+  ],
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "*"
+  },
+  "readme": "Babylon.js is a 3D engine based on webgl and javascript",
+  "readmeFilename": "README.md",
+  "_from": "babylonjs@3.2.0-beta.3",
+  "_resolved": "http://registry.npm.taobao.org/babylonjs/download/babylonjs-3.2.0-beta.3.tgz"
+}
