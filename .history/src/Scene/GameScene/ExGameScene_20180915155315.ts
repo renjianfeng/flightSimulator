@@ -96,14 +96,7 @@ export class ExGameScene{
         freeMateial["emissiveColor"]=new BABYLON.Color3(1,1,1)
 
 
-        var boomMateial=new BABYLON.StandardMaterial("boom",this.scene);
-        console.log("boomMateial")
-        console.log(boomMateial)
-        boomMateial.disableLighting=true;
-        boomMateial["emissiveColor"]=new BABYLON.Color3(1,0,0)
-
-/* 
-        var pipeline = new BABYLON.StandardRenderingPipeline(
+        /* var pipeline = new BABYLON.StandardRenderingPipeline(
             "standard", // The name of the pipeline
             this.scene, // The scene instance
             1.0, // The rendering pipeline ratio
@@ -188,7 +181,6 @@ export class ExGameScene{
             steering:steering,
             terrainMaterial:terrainMaterial,
             freeMateial:freeMateial,
-            boomMateial:boomMateial,
         }
 
         console.log(this.display)

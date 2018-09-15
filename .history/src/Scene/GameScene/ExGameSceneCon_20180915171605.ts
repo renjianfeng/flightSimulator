@@ -40,12 +40,9 @@ export class ExGameSceneCon extends GameScenes{
     }
 
     private frees=[]
-    private booms=[]
 
 
     private probe;
-
-    private ray
 
     protected resetGame(){
         ExGameScene.ins.creatScene()
@@ -57,18 +54,9 @@ export class ExGameSceneCon extends GameScenes{
         SceneManager.ins.engine.hideLoadingUI();
 
 
-      
-
-     /*    var hit = scene.pickWithRay(ray);
-
-        if (hit.pickedMesh){
-		   hit.pickedMesh.scaling.y += 0.01;
-	    } */
-
-
         this.scene.getMeshByName("气流1").material.backFaceCulling=false;
         this.scene.getMeshByName("气流2").material.backFaceCulling=false;
-       // this.scene.getMeshByName("锥体.003").material.backFaceCulling=false;
+      //  this.scene.getMeshByName("音障").material.backFaceCulling=false;
 
 
       /*   this.probe = new BABYLON.ReflectionProbe("main", 64, this.scene);
@@ -77,19 +65,9 @@ export class ExGameSceneCon extends GameScenes{
 
 
         for(var i=0;i<=60;i++){
-            this.frees[i]= BABYLON.MeshBuilder.CreateBox("frees", {height:  0.2, width: 0.2, depth: 5}, this.scene);
+            this.frees[i]= BABYLON.MeshBuilder.CreateBox("frees", {height:  0.5, width: 0.5, depth: 5}, this.scene);
             this.frees[i].lifeState=false;
-            this.frees[i].isPickable=false;
             this.frees[i].material=this.display.freeMateial;
-           // this.frees[i].scaling=new BABYLON.Vector3(1,0.001,0.001)
-           // this.frees[i].rotation=new BABYLON.Vector3(0,0.3,Math.PI*0.5)
-        }
-
-        for(var i=0;i<=60;i++){
-            this.booms[i]= BABYLON.MeshBuilder.CreateSphere("boom", {diameter: 10}, this.scene);
-            this.booms[i].lifeState=false;
-            this.booms[i].isPickable=false;
-            this.booms[i].material=this.display.boomMateial;
            // this.frees[i].scaling=new BABYLON.Vector3(1,0.001,0.001)
            // this.frees[i].rotation=new BABYLON.Vector3(0,0.3,Math.PI*0.5)
         }
@@ -108,19 +86,12 @@ export class ExGameSceneCon extends GameScenes{
         /* var backgroundMaterial = new BABYLON.BackgroundMaterial("backgroundMaterial", scene);
         backgroundMaterial.reflectionTexture=this.probe.cubeTexture */
 
-        this.scene.getMeshByName("__root__").getChildMeshes(false,(mesh)=>{
-            console.log(mesh)
-            console.log(mesh.name)
-            mesh.isPickable=false;
-        })
-
         this.scene.getMeshByName("__root__").parent=this.display.cameraBox
         this.scene.getMeshByName("__root__").rotation.y=-Math.PI*1
       //  this.scene.getMeshByName("__root__").position.x=-0.1;
         this.scene.getMeshByName("__root__").position.y=-0;
         this.display.cameraBox.scaling=new BABYLON.Vector3(10,10,10)
         this.scene.getMeshByName("default").material=this.display.terrainMaterial
-        this.scene.getMeshByName("default").isPickable=true;
         this.display.cameraBox.position.y=-10;
         this.display.camera.target=this.display.cameraBox.position;
        // this.scene.beginAnimation(this.scene.skeletons[0],6,6.001, false);
@@ -132,22 +103,6 @@ export class ExGameSceneCon extends GameScenes{
         console.log( this.scene)
 
 
-
-        var origin = this.display.cameraBox.position;
-	
-	    var forward = new BABYLON.Vector3(0,0,1);		
-	    forward = this.vecToLocal(forward, this.display.cameraBox);
-	
-	    var direction = forward.subtract(origin);
-	    direction = BABYLON.Vector3.Normalize(direction);
-	
-	    //var length = 100;
-	
-	    this.ray = new BABYLON.Ray(origin, direction, 1000);
-
-	
-        
-       // ray.parent=this.display.cameraBox
        
     }
 
@@ -155,12 +110,7 @@ export class ExGameSceneCon extends GameScenes{
     private j;
 
 
-    private freeState;
-
-
     protected addEvent(){
-
-        this.freeState=false;
         this.doEvents["BeforeRender"]=SceneManager.ins.scene.onBeforeRenderObservable.add(()=>{
             this.beforeRender()
         })
@@ -169,62 +119,42 @@ export class ExGameSceneCon extends GameScenes{
 
         setInterval(()=>{
 
-            if(this.freeState){
-                var ram=Math.random()/50;
+            var ram=Math.random()/50;
 
-                if(this.j<=this.frees.length-1){
-               
-                  /*   for(let i=this.j;i<this.frees.length;i++){
-                        console.log(i)
-                        console.log(this.frees[i])
-                        if(this.frees[i].lifeState==false){
-                            this.frees[i].position=this.display.cameraBox.position;
-                            this.frees[i].forword=this.display.cameraBox.forword;
-                            this.j++;
-                            break;
-                        }else{
-                            this.j++;
-                        }
-                    } */
-                    
-                    this.frees[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram,this.display.cameraBox.absolutePosition.z) ;
-                    this.frees[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
-                    this.frees[this.j].lifeState=true;
-                    this.j++;
-                  //  this.timerNpc.start();
-                }else{
-                    this.j=0;
-                  
-                    this.frees[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
-                    this.frees[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
-                    this.frees[this.j].lifeState=true;
-                   // console.log("归零")
-                  //  this.creatNpc()
-                   // this.timerNpc.start();
-                }
-            }
+            if(this.j<=this.frees.length-1){
            
+              /*   for(let i=this.j;i<this.frees.length;i++){
+                    console.log(i)
+                    console.log(this.frees[i])
+                    if(this.frees[i].lifeState==false){
+                        this.frees[i].position=this.display.cameraBox.position;
+                        this.frees[i].forword=this.display.cameraBox.forword;
+                        this.j++;
+                        break;
+                    }else{
+                        this.j++;
+                    }
+                } */
+                
+                this.frees[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram,this.display.cameraBox.absolutePosition.z) ;
+                this.frees[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
+                this.frees[this.j].lifeState=true;
+                this.j++;
+              //  this.timerNpc.start();
+            }else{
+                this.j=0;
+              
+                this.frees[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
+                this.frees[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
+                this.frees[this.j].lifeState=true;
+               // console.log("归零")
+              //  this.creatNpc()
+               // this.timerNpc.start();
+            }
         },50)
-
-       /*  this.scene.meshes.forEach((mesh)=>{
-            console.log(mesh.name)
-        }) */
     }
 
-    private lastSystemTime;
-    private times
-
     protected beforeRender(){
-
-
-        var useTime;
-        if(this.lastSystemTime) {
-            useTime =new Date().getTime() - this.lastSystemTime;
-        }else{
-             useTime = 1000 / 60;
-        }
-         //本次消耗的时间 / 正常每帧应该消耗的时间 算出倍率
-        this.times = useTime / (1000/ 60);
        // console.log(1144)
      //   this.display.cameraBox.rotation.y=-this.display.camera.alpha+Math.PI*0.5;
       //  console.log(this.display.camera.beta/Math.PI)
@@ -272,168 +202,16 @@ export class ExGameSceneCon extends GameScenes{
     private character
 
 
-
-        /**
-     * 创建射线
-     * @param localMeshDirection 
-     * @param localMeshOrigin 
-     * @param intersectsMeshes 
-     * @param body 
-     * @param length 
-     * @param callback 
-     */
-    private rayEventCon(id,localMeshDirection,localMeshOrigin,intersectsMeshes,body,length,callback):void{
-        var ray = new window["BABYLON"].Ray();
-        var rayHelper = new window["BABYLON"].RayHelper(ray);
-        //var localMeshDirection = new BABYLON.Vector3(0, 0, -1);
-       // var localMeshOrigin = new BABYLON.Vector3(0, 0, -.4);
-       // var length = length;
-        rayHelper.attachToMesh(body, localMeshDirection, localMeshOrigin, length);
-        rayHelper["show"](SceneManager.ins.scene);
-        this.doEvents[id]=SceneManager.ins.scene.onAfterRenderObservable.add(()=>{
-            //var hitInfo = ray.intersectsMeshes([SceneManager.ins.scene.getMeshByName("直道_21")]);
-            var hitInfo = ray.intersectsMeshes([intersectsMeshes]);
-            if(hitInfo.length){
-                callback(true)
-            }else{
-                callback(false)
-            }
-        });
-    }
-
-
-    private vecToLocal(vector, mesh){
-        var m = mesh.getWorldMatrix();
-        var v = BABYLON.Vector3.TransformCoordinates(vector, m);
-		return v;		 
-    }
-
-   /*  private castRay(){       
-        var origin = box.position;
-	
-	    var forward = new BABYLON.Vector3(0,0,1);		
-	    forward = vecToLocal(forward, box);
-	
-	    var direction = forward.subtract(origin);
-	    direction = BABYLON.Vector3.Normalize(direction);
-	
-	    var length = 100;
-	
-	    var ray = new BABYLON.Ray(origin, direction, length);
-
-		let rayHelper = new BABYLON.RayHelper(ray);		
-		rayHelper.show(scene);		
-
-        var hit = scene.pickWithRay(ray);
-
-        if (hit.pickedMesh){
-		   hit.pickedMesh.scaling.y += 0.01;
-	    }
-    } */
-
     private freeUpdate() {
-
-       /*  if(!this.freeState){
-            return;
-        } */
-        var origin = this.display.cameraBox.position;
-	
-        /*   var forward = new BABYLON.Vector3(0,0,1);		
-          forward = this.vecToLocal(forward, this.display.cameraBox); */
-
-          var forward = new BABYLON.Vector3(0,0,1);		
-          forward = this.vecToLocal(forward, this.display.cameraBox);
-      
-          var direction = forward.subtract(origin);
-          direction = BABYLON.Vector3.Normalize(direction);
-      /* 
-          var direction = this.display.cameraBox.forward.subtract(origin);
-          direction = BABYLON.Vector3.Normalize(direction); */
-      
-          //var length = 100;
-      
-          this.ray.origin = origin;
-          this.ray.direction =direction;
-
-       /*    let rayHelper = new BABYLON.RayHelper(this.ray);		
-          rayHelper.show(this.scene,new BABYLON.Color3(1,1,1));	 */
-
 
         var ram=Math.random;
 
-        var hit = this.scene.pickWithRay(this.ray);
-
-       /*  if (hit.pickedMesh){
-		   console.log("hit.pickedMesh.name")
-		   console.log(hit.pickedMesh.name)
-		   console.log(hit.pickedPoint)
-	    } */
-
-        this.frees.forEach((free,i)=>{
+        this.frees.forEach((free)=>{
             if(free.lifeState==true){
-                var forword=new BABYLON.Vector3(free.forward.x*10*this.times,free.forward.y*10*this.times,free.forward.z*10*this.times)
+                var forword=new BABYLON.Vector3(free.forward.x*10,free.forward.y*10,free.forward.z*10)
                 free.moveWithCollisions(forword);
                 free.isVisible=true;
 
-                if (hit.pickedMesh){
-                    /* console.log("hit.pickedMesh.name")
-                    console.log(hit.pickedMesh.name)
-                    console.log(hit.pickedPoint) */
-                    if(!free.boomPosition){
-                        free.boomPosition=new BABYLON.Vector3(hit.pickedPoint.x,hit.pickedPoint.y,hit.pickedPoint.z)
-                    }
-                   
-                    //this.booms[i].position=hit.pickedPoint;
-                 }
-
-                 if(free.boomPosition){
-                    var jl2=this.getDistance(
-                        free.position.x,
-                        free.position.y, 
-                        free.position.z, 
-                        free.boomPosition.x,
-                        free.boomPosition.y, 
-                        free.boomPosition.z, 
-                        )
-    
-                     if(jl2<=50){
-                        free.lifeState=false;
-                        this.booms[i].position=new BABYLON.Vector3(free.boomPosition.x,free.boomPosition.y,free.boomPosition.z);
-                        free.boomPosition=null;
-                     }
-                 }
-                 
-               
-
- /*                var pointToIntersect = new BABYLON.Vector3(10, -5, 0);
-if (balloon3.intersectsPoint(pointToIntersect)){
-  balloon3.material.emissiveColor = new BABYLON.Color4(1, 0, 0, 1);
-} */
-              /*   if (this.scene.getMeshByName("default").intersectsPoint(free.position)) {
-                    //free.material.emissiveColor = new BABYLON.Color4(1, 0, 0, 1);
-                    this.booms[i].position=new BABYLON.Vector3(free.position.x,free.position.y,free.position.z);
-                    free.lifeState=false
-                  } else {
-                    //free.material.emissiveColor = new BABYLON.Color4(1, 1, 1, 1);
-                } */
-
-               /*  this.rayEventCon(
-                    "frontPick",
-                    new BABYLON.Vector3(0, 0, -1),
-                    new BABYLON.Vector3(0, 0, 0),
-                    this.scene.getMeshByName("default"),
-                    free,
-                    5,
-                    (e)=>{
-                        //console.log(e)
-                        if(e){
-                            //console.log("撞到前面")
-                            this.booms[i].position=new BABYLON.Vector3(free.position.x,free.position.y,free.position.z);
-                            free.lifeState=false
-                        }
-                    }
-                )
- */
                 var jl=this.getDistance(
                     free.position.x,
                     free.position.y, 
@@ -445,7 +223,6 @@ if (balloon3.intersectsPoint(pointToIntersect)){
 
                 if(jl>=600){
                     free.lifeState=false;
-                    free.boomPosition=null;
                     free.position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
                     free.rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);    
                 }
@@ -459,13 +236,9 @@ if (balloon3.intersectsPoint(pointToIntersect)){
         
     }
 
-
-    
-   
-
     private movePlayer():void{
 
-      
+
        // this.scene.getMeshByName("尾翼").rotation=new BABYLON.Vector3(0,1,0);
         var gravity = 0;
         this.character = this.display.cameraBox;
@@ -485,9 +258,7 @@ if (balloon3.intersectsPoint(pointToIntersect)){
 
 
            // console.log(this.display.cameraBox.rotation.z)
-
-        //   console.log(this.scene.meshes)
-           //this.barrierCon(true)
+           this.barrierCon(true)
 
            this.canardUpdate()
            this.empennageUpdate()
@@ -495,10 +266,10 @@ if (balloon3.intersectsPoint(pointToIntersect)){
            this.airflowUpdate()
 
 
-            this.display.cameraBox.rotation.y-=this.display.cameraBox.rotation.z/50*this.times;
+            this.display.cameraBox.rotation.y-=this.display.cameraBox.rotation.z/50;
 
             if(this.moveY>=50||this.moveY<=-50){
-                this.display.cameraBox.rotation.x-=this.moveY/40000*this.times
+                this.display.cameraBox.rotation.x-=this.moveY/40000
             }
 
             if(this.display.cameraBox.rotation.x>Math.PI*2){
@@ -518,7 +289,7 @@ if (balloon3.intersectsPoint(pointToIntersect)){
                // console.log("2223355")
             }
     
-            var forword=new BABYLON.Vector3(this.character.forward.x*2*this.times,this.character.forward.y*2*this.times,this.character.forward.z*2*this.times)
+            var forword=new BABYLON.Vector3(this.character.forward.x*2,this.character.forward.y*2,this.character.forward.z*2)
      
             this.character.moveWithCollisions(forword);
     }
@@ -628,30 +399,12 @@ if (balloon3.intersectsPoint(pointToIntersect)){
                     }
                 }); */
 
-
-
                 // 检测鼠标锁定状态变化
                 document.addEventListener('pointerlockchange', ()=> {
                     if (document.pointerLockElement == eleImage) {
                         document.addEventListener("mousemove", rotate3D, false);
-
-                        document.addEventListener("mousedown",()=>{
-                            this.freeState=true;
-                        })
-
-                        document.addEventListener("mouseup",()=>{
-                            this.freeState=false;
-                        })
                     } else {
                         document.removeEventListener("mousemove", rotate3D, false);
-
-                        document.addEventListener("mousedown",()=>{
-                            this.freeState=true;
-                        })
-
-                        document.addEventListener("mouseup",()=>{
-                            this.freeState=false;
-                        })
                     }
                 }, false);
             }
@@ -943,10 +696,7 @@ if (balloon3.intersectsPoint(pointToIntersect)){
       }
 
 
-   
-
-
-    /*   private barrierConTime;
+      private barrierConTime;
       private barrierConState;
 
       private barrierCon(barrierConState){
@@ -960,15 +710,14 @@ if (balloon3.intersectsPoint(pointToIntersect)){
         
         if(barrierConState){
             this.barrierConTime=setInterval(()=>{ 
-
-                this.scene.getMeshByName("气流3").isVisible=!this.scene.getMeshByName("气流3").isVisible;
+                this.scene.getMeshByName("音障").isVisible=!this.scene.getMeshByName("音障").isVisible;
              //   this.scene.getMeshByName("气流2").isVisible=!this.scene.getMeshByName("气流2").isVisible;
             },30)
         }else{
-            this.scene.getMeshByName("气流3").isVisible=false;
+            this.scene.getMeshByName("音障").isVisible=false;
             //this.scene.getMeshByName("气流2").isVisible=false;
         }
 
         this.barrierConState=barrierConState
-      } */
+      }
 }

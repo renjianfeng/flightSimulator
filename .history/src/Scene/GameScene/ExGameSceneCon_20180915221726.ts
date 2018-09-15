@@ -333,9 +333,9 @@ export class ExGameSceneCon extends GameScenes{
 
     private freeUpdate() {
 
-       /*  if(!this.freeState){
+        if(!this.freeState){
             return;
-        } */
+        }
         var origin = this.display.cameraBox.position;
 	
         /*   var forward = new BABYLON.Vector3(0,0,1);		
@@ -634,24 +634,8 @@ if (balloon3.intersectsPoint(pointToIntersect)){
                 document.addEventListener('pointerlockchange', ()=> {
                     if (document.pointerLockElement == eleImage) {
                         document.addEventListener("mousemove", rotate3D, false);
-
-                        document.addEventListener("mousedown",()=>{
-                            this.freeState=true;
-                        })
-
-                        document.addEventListener("mouseup",()=>{
-                            this.freeState=false;
-                        })
                     } else {
                         document.removeEventListener("mousemove", rotate3D, false);
-
-                        document.addEventListener("mousedown",()=>{
-                            this.freeState=true;
-                        })
-
-                        document.addEventListener("mouseup",()=>{
-                            this.freeState=false;
-                        })
                     }
                 }, false);
             }

@@ -155,12 +155,7 @@ export class ExGameSceneCon extends GameScenes{
     private j;
 
 
-    private freeState;
-
-
     protected addEvent(){
-
-        this.freeState=false;
         this.doEvents["BeforeRender"]=SceneManager.ins.scene.onBeforeRenderObservable.add(()=>{
             this.beforeRender()
         })
@@ -169,41 +164,38 @@ export class ExGameSceneCon extends GameScenes{
 
         setInterval(()=>{
 
-            if(this.freeState){
-                var ram=Math.random()/50;
+            var ram=Math.random()/50;
 
-                if(this.j<=this.frees.length-1){
-               
-                  /*   for(let i=this.j;i<this.frees.length;i++){
-                        console.log(i)
-                        console.log(this.frees[i])
-                        if(this.frees[i].lifeState==false){
-                            this.frees[i].position=this.display.cameraBox.position;
-                            this.frees[i].forword=this.display.cameraBox.forword;
-                            this.j++;
-                            break;
-                        }else{
-                            this.j++;
-                        }
-                    } */
-                    
-                    this.frees[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram,this.display.cameraBox.absolutePosition.z) ;
-                    this.frees[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
-                    this.frees[this.j].lifeState=true;
-                    this.j++;
-                  //  this.timerNpc.start();
-                }else{
-                    this.j=0;
-                  
-                    this.frees[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
-                    this.frees[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
-                    this.frees[this.j].lifeState=true;
-                   // console.log("归零")
-                  //  this.creatNpc()
-                   // this.timerNpc.start();
-                }
-            }
+            if(this.j<=this.frees.length-1){
            
+              /*   for(let i=this.j;i<this.frees.length;i++){
+                    console.log(i)
+                    console.log(this.frees[i])
+                    if(this.frees[i].lifeState==false){
+                        this.frees[i].position=this.display.cameraBox.position;
+                        this.frees[i].forword=this.display.cameraBox.forword;
+                        this.j++;
+                        break;
+                    }else{
+                        this.j++;
+                    }
+                } */
+                
+                this.frees[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram,this.display.cameraBox.absolutePosition.z) ;
+                this.frees[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
+                this.frees[this.j].lifeState=true;
+                this.j++;
+              //  this.timerNpc.start();
+            }else{
+                this.j=0;
+              
+                this.frees[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
+                this.frees[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
+                this.frees[this.j].lifeState=true;
+               // console.log("归零")
+              //  this.creatNpc()
+               // this.timerNpc.start();
+            }
         },50)
 
        /*  this.scene.meshes.forEach((mesh)=>{
@@ -333,9 +325,7 @@ export class ExGameSceneCon extends GameScenes{
 
     private freeUpdate() {
 
-       /*  if(!this.freeState){
-            return;
-        } */
+
         var origin = this.display.cameraBox.position;
 	
         /*   var forward = new BABYLON.Vector3(0,0,1);		
@@ -363,11 +353,11 @@ export class ExGameSceneCon extends GameScenes{
 
         var hit = this.scene.pickWithRay(this.ray);
 
-       /*  if (hit.pickedMesh){
+        if (hit.pickedMesh){
 		   console.log("hit.pickedMesh.name")
 		   console.log(hit.pickedMesh.name)
 		   console.log(hit.pickedPoint)
-	    } */
+	    }
 
         this.frees.forEach((free,i)=>{
             if(free.lifeState==true){
@@ -379,10 +369,7 @@ export class ExGameSceneCon extends GameScenes{
                     /* console.log("hit.pickedMesh.name")
                     console.log(hit.pickedMesh.name)
                     console.log(hit.pickedPoint) */
-                    if(!free.boomPosition){
-                        free.boomPosition=new BABYLON.Vector3(hit.pickedPoint.x,hit.pickedPoint.y,hit.pickedPoint.z)
-                    }
-                   
+                    free.boomPosition=new BABYLON.Vector3(hit.pickedPoint.x,hit.pickedPoint.y,hit.pickedPoint.z)
                     //this.booms[i].position=hit.pickedPoint;
                  }
 
@@ -399,7 +386,6 @@ export class ExGameSceneCon extends GameScenes{
                      if(jl2<=50){
                         free.lifeState=false;
                         this.booms[i].position=new BABYLON.Vector3(free.boomPosition.x,free.boomPosition.y,free.boomPosition.z);
-                        free.boomPosition=null;
                      }
                  }
                  
@@ -445,7 +431,6 @@ if (balloon3.intersectsPoint(pointToIntersect)){
 
                 if(jl>=600){
                     free.lifeState=false;
-                    free.boomPosition=null;
                     free.position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
                     free.rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);    
                 }
@@ -634,24 +619,8 @@ if (balloon3.intersectsPoint(pointToIntersect)){
                 document.addEventListener('pointerlockchange', ()=> {
                     if (document.pointerLockElement == eleImage) {
                         document.addEventListener("mousemove", rotate3D, false);
-
-                        document.addEventListener("mousedown",()=>{
-                            this.freeState=true;
-                        })
-
-                        document.addEventListener("mouseup",()=>{
-                            this.freeState=false;
-                        })
                     } else {
                         document.removeEventListener("mousemove", rotate3D, false);
-
-                        document.addEventListener("mousedown",()=>{
-                            this.freeState=true;
-                        })
-
-                        document.addEventListener("mouseup",()=>{
-                            this.freeState=false;
-                        })
                     }
                 }, false);
             }

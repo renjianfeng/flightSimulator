@@ -102,7 +102,7 @@ export class ExGameScene{
         boomMateial.disableLighting=true;
         boomMateial["emissiveColor"]=new BABYLON.Color3(1,0,0)
 
-/* 
+
         var pipeline = new BABYLON.StandardRenderingPipeline(
             "standard", // The name of the pipeline
             this.scene, // The scene instance
@@ -116,7 +116,7 @@ export class ExGameScene{
 
         pipeline.motionStrength = 1.5;
 
-        pipeline.motionBlurSamples = 32.0; */
+        pipeline.motionBlurSamples = 32.0;
 
        /*  var pipeline = new BABYLON.DefaultRenderingPipeline(
             "default", // The name of the pipeline
