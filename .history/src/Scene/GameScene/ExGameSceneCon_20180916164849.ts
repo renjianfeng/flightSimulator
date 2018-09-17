@@ -86,10 +86,7 @@ export class ExGameSceneCon extends GameScenes{
     this.rect2.height = "400px";
    // this.rect1.cornerRadius = 5;
     this.rect2.color = "#009855";
-    this.rect2.thickness = 2;
-
-    console.log(this.rect2)
-    console.log("this.rect2")
+    this.rect2.thickness = 1;
 
 
 
@@ -165,7 +162,7 @@ export class ExGameSceneCon extends GameScenes{
             b6[i].width = "30px";
         }
         
-        b6[i].height = "3px";
+        b6[i].height = "2px";
         //this.rect1.cornerRadius = 5;
         b6[i].background = "#009855";
         b6[i].thickness = 0;

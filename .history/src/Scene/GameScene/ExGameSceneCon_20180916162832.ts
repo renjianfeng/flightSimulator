@@ -86,10 +86,7 @@ export class ExGameSceneCon extends GameScenes{
     this.rect2.height = "400px";
    // this.rect1.cornerRadius = 5;
     this.rect2.color = "#009855";
-    this.rect2.thickness = 2;
-
-    console.log(this.rect2)
-    console.log("this.rect2")
+    this.rect2.thickness = 1;
 
 
 
@@ -105,20 +102,6 @@ export class ExGameSceneCon extends GameScenes{
     //this.rect3.background = "#009855";
     this.rect3.thickness = 0;
     this.rect2.addControl(this.rect3);
-
-
-   // AssetsManager.ins.resourceObject["images"]["gameScene"]["jiantou"].clone()
-
-    var image = new BABYLON.GUI.Image("but", AssetsManager.ins.resourceObject["images"]["gameScene"]["jiantou"].src);
-    image.width = "30px";
-    image.height = "15px";
-    image.top="192px";
-    image.left="110px";
-    image.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-    image.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-    this.rect2.addControl(image);  
-
-    
 
 
     var b5=[]
@@ -165,7 +148,7 @@ export class ExGameSceneCon extends GameScenes{
             b6[i].width = "30px";
         }
         
-        b6[i].height = "3px";
+        b6[i].height = "2px";
         //this.rect1.cornerRadius = 5;
         b6[i].background = "#009855";
         b6[i].thickness = 0;
@@ -365,7 +348,7 @@ export class ExGameSceneCon extends GameScenes{
                 }
             }
            
-        },50)
+        },500)
 
        /*  this.scene.meshes.forEach((mesh)=>{
             console.log(mesh.name)
@@ -651,7 +634,7 @@ if (balloon3.intersectsPoint(pointToIntersect)){
 
          //    console.log((3600*this.display.cameraBox.rotation.x/(Math.PI*2))+"px");
 
-             this.rect3.top=(-1460+1800*this.display.cameraBox.rotation.x/(Math.PI*2))+"px";
+             this.rect3.top=(-1600+1800*this.display.cameraBox.rotation.x/(Math.PI*2))+"px";
              //this.rect3.top="-100%";
            
            // console.log(40+this.display.cameraBox.rotation.z*10)

@@ -166,8 +166,8 @@ export class ExGameScene{
         terrainMaterial.mixTexture = AssetsManager.ins.resourceObject["textures"]["gameScene"]["maptr2"].clone()
 
 
-        var gl = new BABYLON.GlowLayer("glow", this.scene);
-        gl.intensity = 1;
+      /*   var gl = new BABYLON.GlowLayer("glow", this.scene);
+        gl.intensity = 1; */
    
 
         terrainMaterial.diffuseTexture1 = AssetsManager.ins.resourceObject["textures"]["gameScene"]["grass"].clone()

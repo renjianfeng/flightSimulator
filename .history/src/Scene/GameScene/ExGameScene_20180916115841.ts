@@ -81,7 +81,7 @@ export class ExGameScene{
         camera3.cameraAcceleration = 0.18;
         camera3.maxCameraSpeed = 30;
         //camera3.isStereoscopicSideBySide=false;
-        camera3.noRotationConstraint=false;
+        camera3.noRotationConstraint=true;
         camera3.fov=1.3
         camera3.detachControl(SceneManager.ins.canvas);
 

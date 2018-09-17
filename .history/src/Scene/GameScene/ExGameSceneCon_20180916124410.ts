@@ -1,4 +1,3 @@
-
 import {AssetsManager, SceneManager} from "../../public/index";
 import {DisplayPool} from "../../public/index";
 import {ModuleName} from "../../public/index";
@@ -47,11 +46,8 @@ export class ExGameSceneCon extends GameScenes{
     private probe;
 
     private ray
-    private hit
 
     private rect1;
-    private rect2;
-    private rect3;
 
     protected resetGame(){
         ExGameScene.ins.creatScene()
@@ -64,150 +60,24 @@ export class ExGameSceneCon extends GameScenes{
 
 
 
-
-  
-
          // GUI
     var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
     this.rect1 = new BABYLON.GUI.Rectangle();
-    this.rect1.width = "90px";
-    this.rect1.height = "90px";
-    //this.rect1.cornerRadius = 5;
-   // this.rect1.color = "#009855";
-    this.rect1.thickness = 0;
-   // this.rect1.background = new BABYLON.Color4(0,0,0,0);
+    this.rect1.width = "40px";
+    this.rect1.height = "40px";
+    this.rect1.cornerRadius = 20;
+    this.rect1.color = "Orange";
+    this.rect1.thickness = 4;
+    this.rect1.background = new BABYLON.Color4(0,0,0,0);
     advancedTexture.addControl( this.rect1);
 
-
-
-    this.rect2 = new BABYLON.GUI.Rectangle();
-    this.rect2.width = "700px";
-    this.rect2.height = "400px";
-   // this.rect1.cornerRadius = 5;
-    this.rect2.color = "#009855";
-    this.rect2.thickness = 2;
-
-    console.log(this.rect2)
-    console.log("this.rect2")
-
-
-
-    this.rect3 = new BABYLON.GUI.Rectangle();
-
-    this.rect3.width = "300px";
-    this.rect3.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-    this.rect3.height = "10800px";
-    this.rect3.top="0";
-    this.rect3.left="10px";
-    this.rect3.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-    //this.rect1.cornerRadius = 5;
-    //this.rect3.background = "#009855";
-    this.rect3.thickness = 0;
-    this.rect2.addControl(this.rect3);
-
-
-   // AssetsManager.ins.resourceObject["images"]["gameScene"]["jiantou"].clone()
-
-    var image = new BABYLON.GUI.Image("but", AssetsManager.ins.resourceObject["images"]["gameScene"]["jiantou"].src);
-    image.width = "30px";
-    image.height = "15px";
-    image.top="192px";
-    image.left="110px";
-    image.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-    image.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-    this.rect2.addControl(image);  
-
-    
-
-
-    var b5=[]
-    var b6=[]
-    var label=[]
-    var countB=0;
-    for(var i=0;i<=36;i++){
-        console.log(i)
-        countB+=30
-        if(countB>=360){
-            countB=0;
-        }
-        b5[i]= new BABYLON.GUI.Rectangle();
-        b5[i].verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-        b5[i].horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-        b5[i].top=50*i*3;
-        b5[i].width = "300px";
-        b5[i].height = "20px";
-        //this.rect1.cornerRadius = 5;
-       // b5[i].background = "#009855";
-        b5[i].thickness = 0;
-        this.rect3.addControl( b5[i]);
-        label[i] = new BABYLON.GUI.TextBlock();
-        if(countB==0){
-            label[i].text = "水平："+countB+"°";
-        }else{
-            label[i].text = ""+countB+"°";
-        }
-        
-        label[i].color="#ffffff"
-        label[i].textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-
-        b5[i].addControl(label[i]);
-
-        b6[i]= new BABYLON.GUI.Rectangle();
-        b6[i].horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-     //   b6[i].verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
-       // b6[i].left="50px";
-        if(countB==0){
-            b6[i].left="80px";
-            b6[i].width = "50px";
-        }else{
-            b6[i].left="50px";
-            b6[i].width = "30px";
-        }
-        
-        b6[i].height = "3px";
-        //this.rect1.cornerRadius = 5;
-        b6[i].background = "#009855";
-        b6[i].thickness = 0;
-        b5[i].addControl(b6[i]);
-    }
-
-
-  /*   console.log( "this.rect2")
-    console.log( this.rect2) */
-   // this.rect1.background = new BABYLON.Color4(0,0,0,0);
-    advancedTexture.addControl( this.rect2);
-
-    /* var label = new BABYLON.GUI.TextBlock();
+    var label = new BABYLON.GUI.TextBlock();
     label.text = "Sphere";
-    this.rect1.addControl(label); */
-
-    var b1 = new BABYLON.GUI.Rectangle();
-    b1.width = "90px";
-    b1.height = "2px";
-    //this.rect1.cornerRadius = 5;
-    b1.background = "#009855";
-    b1.thickness = 0;
-    this.rect1.addControl(b1);
-
-    var b2 = new BABYLON.GUI.Rectangle();
-    b2.width = "2px";
-    b2.height = "90px";
-    //this.rect1.cornerRadius = 5;
-    b2.background = "#009855";
-    b2.thickness = 0;
-    this.rect1.addControl(b2);
-
-    var b3 = new BABYLON.GUI.Rectangle();
-    b3.width = "40px";
-    b3.height = "40px";
-    //this.rect1.cornerRadius = 5;
-    b3.color = "#009855";
-    b3.thickness = 2;
-    this.rect1.addControl(b3);
+    this.rect1.addControl(label);
 
     //this.rect1.linkWithMesh(sphere);   
-   // this.rect1.linkOffsetY = -50;
+    this.rect1.linkOffsetY = -50;
       
 
      /*    var hit = scene.pickWithRay(ray);
@@ -226,13 +96,12 @@ export class ExGameSceneCon extends GameScenes{
         this.probe.renderList.push( this.scene.getMeshByName("default"));
         this.probe.attachToMesh(this.display.cameraBox); */
 
-        this.scene.collisionsEnabled = false;
+
         for(var i=0;i<=60;i++){
             this.frees[i]= BABYLON.MeshBuilder.CreateBox("frees", {height:  0.2, width: 0.2, depth: 5}, this.scene);
             this.frees[i].lifeState=false;
             this.frees[i].isPickable=false;
             this.frees[i].material=this.display.freeMateial;
-            this.frees[i].checkCollisions = false;;
            // this.frees[i].scaling=new BABYLON.Vector3(1,0.001,0.001)
            // this.frees[i].rotation=new BABYLON.Vector3(0,0.3,Math.PI*0.5)
         }
@@ -242,22 +111,16 @@ export class ExGameSceneCon extends GameScenes{
             this.booms[i].lifeState=false;
             this.booms[i].isPickable=false;
             this.booms[i].material=this.display.boomMateial;
-            this.frees[i].checkCollisions = false;;
            // this.frees[i].scaling=new BABYLON.Vector3(1,0.001,0.001)
            // this.frees[i].rotation=new BABYLON.Vector3(0,0.3,Math.PI*0.5)
         }
 
        // alert()
 
-
-       this.scene.meshes.forEach((mesh)=>{
-           mesh.checkCollisions = false;;
-       })
-
     
 
-       /*  console.log("this.scene")
-        console.log(this.scene) */
+        console.log("this.scene")
+        console.log(this.scene)
         this.scene.createDefaultSkybox(AssetsManager.ins.resourceObject["cubeTextures"]["gameScene"]["skybox"], true, 10000);
 
 
@@ -267,8 +130,8 @@ export class ExGameSceneCon extends GameScenes{
         backgroundMaterial.reflectionTexture=this.probe.cubeTexture */
 
         this.scene.getMeshByName("__root__").getChildMeshes(false,(mesh)=>{
-            /* console.log(mesh)
-            console.log(mesh.name) */
+            console.log(mesh)
+            console.log(mesh.name)
             mesh.isPickable=false;
         })
 
@@ -290,9 +153,6 @@ export class ExGameSceneCon extends GameScenes{
         console.log( this.scene)
 
 
-      //  panel.position=this.display.cameraBox.position;
-
-
 
         var origin = this.display.cameraBox.position;
 	
@@ -306,7 +166,7 @@ export class ExGameSceneCon extends GameScenes{
 	
 	    this.ray = new BABYLON.Ray(origin, direction, 1000);
 
-        
+	
         
        // ray.parent=this.display.cameraBox
        
@@ -434,7 +294,35 @@ export class ExGameSceneCon extends GameScenes{
 
 
 
-    
+        /**
+     * 创建射线
+     * @param localMeshDirection 
+     * @param localMeshOrigin 
+     * @param intersectsMeshes 
+     * @param body 
+     * @param length 
+     * @param callback 
+     */
+    private rayEventCon(id,localMeshDirection,localMeshOrigin,intersectsMeshes,body,length,callback):void{
+        var ray = new window["BABYLON"].Ray();
+        var rayHelper = new window["BABYLON"].RayHelper(ray);
+        //var localMeshDirection = new BABYLON.Vector3(0, 0, -1);
+       // var localMeshOrigin = new BABYLON.Vector3(0, 0, -.4);
+       // var length = length;
+        rayHelper.attachToMesh(body, localMeshDirection, localMeshOrigin, length);
+        rayHelper["show"](SceneManager.ins.scene);
+        this.doEvents[id]=SceneManager.ins.scene.onAfterRenderObservable.add(()=>{
+            //var hitInfo = ray.intersectsMeshes([SceneManager.ins.scene.getMeshByName("直道_21")]);
+            var hitInfo = ray.intersectsMeshes([intersectsMeshes]);
+            if(hitInfo.length){
+                callback(true)
+            }else{
+                callback(false)
+            }
+        });
+    }
+
+
     private vecToLocal(vector, mesh){
         var m = mesh.getWorldMatrix();
         var v = BABYLON.Vector3.TransformCoordinates(vector, m);
@@ -471,38 +359,38 @@ export class ExGameSceneCon extends GameScenes{
         } */
         var origin = this.display.cameraBox.position;
 	
-    
+        /*   var forward = new BABYLON.Vector3(0,0,1);		
+          forward = this.vecToLocal(forward, this.display.cameraBox); */
 
           var forward = new BABYLON.Vector3(0,0,1);		
           forward = this.vecToLocal(forward, this.display.cameraBox);
       
           var direction = forward.subtract(origin);
           direction = BABYLON.Vector3.Normalize(direction);
-
+      /* 
+          var direction = this.display.cameraBox.forward.subtract(origin);
+          direction = BABYLON.Vector3.Normalize(direction); */
+      
+          //var length = 100;
       
           this.ray.origin = origin;
           this.ray.direction =direction;
 
        /*    let rayHelper = new BABYLON.RayHelper(this.ray);		
           rayHelper.show(this.scene,new BABYLON.Color3(1,1,1));	 */
-          this.hit = this.scene.pickWithRay(this.ray);
+
 
         var ram=Math.random;
 
-        
+        var hit = this.scene.pickWithRay(this.ray);
 
-
-        this.rect2.linkWithMesh(this.display.cameraBox)
-
-        if (this.hit.pickedMesh){
-           this.rect1.moveToVector3(this.hit.pickedPoint,this.scene)
-           this.rect1.isVisible = true;
-           this.rect2.color = "#ffc107";
-
-	    }else{
-            this.rect1.isVisible = false;
-            this.rect2.color = "#009855";
-        }
+        if (hit.pickedMesh){
+		   console.log("hit.pickedMesh.name")
+		   console.log(hit.pickedMesh.name)
+           console.log(hit.pickedPoint)
+           this.rect1.moveToVector3(hit.pickedPoint,this.scene)
+           this.rect1.linkOffsetY = 15;
+	    }
 
         this.frees.forEach((free,i)=>{
             if(free.lifeState==true){
@@ -510,12 +398,12 @@ export class ExGameSceneCon extends GameScenes{
                 free.moveWithCollisions(forword);
                 free.isVisible=true;
 
-                if (this.hit.pickedMesh){
+                if (hit.pickedMesh){
                     /* console.log("hit.pickedMesh.name")
                     console.log(hit.pickedMesh.name)
                     console.log(hit.pickedPoint) */
                     if(!free.boomPosition){
-                        free.boomPosition=new BABYLON.Vector3(this.hit.pickedPoint.x,this.hit.pickedPoint.y,this.hit.pickedPoint.z)
+                        free.boomPosition=new BABYLON.Vector3(hit.pickedPoint.x,hit.pickedPoint.y,hit.pickedPoint.z)
                     }
                    
                     //this.booms[i].position=hit.pickedPoint;
@@ -581,13 +469,13 @@ if (balloon3.intersectsPoint(pointToIntersect)){
                 if(jl>=600){
                     free.lifeState=false;
                     free.boomPosition=null;
-                /*     free.position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
+                    free.position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
                     free.rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);    
-          */       }
+                }
             }else{
-               /*  free.position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
+                free.position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
                 free.rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);    
-              */   free.isVisible=false;
+                free.isVisible=false;
             }
         })
 
@@ -630,8 +518,6 @@ if (balloon3.intersectsPoint(pointToIntersect)){
            this.airflowUpdate()
 
 
-           this.rect2.rotation=-this.display.cameraBox.rotation.z;
-
             this.display.cameraBox.rotation.y-=this.display.cameraBox.rotation.z/50*this.times;
 
             if(this.moveY>=50||this.moveY<=-50){
@@ -645,14 +531,6 @@ if (balloon3.intersectsPoint(pointToIntersect)){
              if(this.display.cameraBox.rotation.x<=-Math.PI*2){
                 this.display.cameraBox.rotation.x=0
              }
-
-
-             ;
-
-         //    console.log((3600*this.display.cameraBox.rotation.x/(Math.PI*2))+"px");
-
-             this.rect3.top=(-1460+1800*this.display.cameraBox.rotation.x/(Math.PI*2))+"px";
-             //this.rect3.top="-100%";
            
            // console.log(40+this.display.cameraBox.rotation.z*10)
 

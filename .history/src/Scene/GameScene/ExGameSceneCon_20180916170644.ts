@@ -165,7 +165,7 @@ export class ExGameSceneCon extends GameScenes{
             b6[i].width = "30px";
         }
         
-        b6[i].height = "3px";
+        b6[i].height = "2px";
         //this.rect1.cornerRadius = 5;
         b6[i].background = "#009855";
         b6[i].thickness = 0;
