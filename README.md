@@ -1,6 +1,6 @@
 # flightSimulator（法国台风战斗机模拟驾驶）
 Eurofighter Typhoon simulated driving(法国台风战斗机模拟驾驶)
-![Alt text](/src/Resource/gameScene/images/ui/title.png)
+![Alt text](/src/Resource/gameScene/images/ui/titlle.png)
 ## 介绍
 * 通过TypeScript构建，通过webpack进行项目工程化管理。
 * 试玩Github Page：https://renjianfeng.github.io/flightSimulator/released/index.html
