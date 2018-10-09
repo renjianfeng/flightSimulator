@@ -3,7 +3,10 @@ Eurofighter Typhoon simulated driving(法国台风战斗机模拟驾驶)
 ![Alt text](/src/Resource/gameScene/images/ui/titlle.png)
 ## 介绍
 * 通过TypeScript构建，通过webpack进行项目工程化管理。
+* 使用babylonjs作为游戏引擎
+* 通过blender调试PBR物理材质
 * 试玩Github Page：https://renjianfeng.github.io/flightSimulator/released/index.html
+* 讨论：http://www.html5gamedevs.com/topic/40127-eurofighter-typhoon-simulated-driving-%EF%BC%8Cunder-development/
 ## 快速开始
 * 1.安装依赖：
 ```javascript  
