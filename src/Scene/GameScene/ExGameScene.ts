@@ -1,4 +1,3 @@
-
 import {AssetsManager} from "../../public/index"
 import {SceneManager} from "../../public/index"
 import {WeatherState} from "../../public/index";
@@ -29,7 +28,11 @@ export class ExGameScene{
         this.scene=SceneManager.ins.scene
         //设置背景色
         this.scene.clearColor=new BABYLON.Color4(52/255,156/255,255/255)
+      //  SceneManager.ins.engine.setHardwareScalingLevel(1)
 
+     
+
+     // BABYLON.SceneOptimizer.OptimizeAsync(this.scene, BABYLON.SceneOptimizerOptions.HighDegradationAllowed())
         /**
          * 室外相机
          * */
@@ -53,6 +56,15 @@ export class ExGameScene{
         var cameraBox = BABYLON.MeshBuilder.CreateBox("camera2Box", {height:  0.5, width: 0.5, depth: 0.5}, this.scene);
         cameraBox.isVisible=false;
         cameraBox.rotation=new BABYLON.Vector3(0,0,0)
+
+
+        //准星辅助模型
+        var pickMesh = BABYLON.MeshBuilder.CreateBox("pickMesh", {height:  0.5, width: 0.5, depth: 0.5}, this.scene);
+        pickMesh.position=new BABYLON.Vector3(0,0,3000);
+        pickMesh.isPickable=false;
+        pickMesh.parent=cameraBox
+        pickMesh.isVisible=false;
+       // pickMesh.rotation=new BABYLON.Vector3(0,0,0)
 
          /**
              * 灯光延时跟随相机
@@ -133,16 +145,17 @@ export class ExGameScene{
         console.log("freeMateial")
         console.log(freeMateial)
       //  freeMateial.disableLighting=true;
-        freeMateial["emissiveColor"]=new BABYLON.Color3(254/255,82/255,22/255)
-        freeMateial["diffuseColor"]=new BABYLON.Color3(1,1,1)
-
+      freeMateial["emissiveColor"]=new BABYLON.Color3(1,1,1)
+      freeMateial["diffuseColor"]=new BABYLON.Color3(0,0,0)
+      freeMateial["emissiveTexture"]=AssetsManager.ins.resourceObject["textures"]["gameScene"]["boom"].clone()
 
         var boomMateial=new BABYLON.StandardMaterial("boom",this.scene);
         console.log("boomMateial")
         console.log(boomMateial)
         boomMateial.disableLighting=true;
-        boomMateial["emissiveColor"]=new BABYLON.Color3(254/255,82/255,22/255)
-        boomMateial["diffuseColor"]=new BABYLON.Color3(1,1,1)
+        boomMateial["emissiveColor"]=new BABYLON.Color3(1,1,1)
+        boomMateial["diffuseColor"]=new BABYLON.Color3(0,0,0)
+        boomMateial["emissiveTexture"]=AssetsManager.ins.resourceObject["textures"]["gameScene"]["boom"].clone()
 
 
        /*  var pipeline = new BABYLON.StandardRenderingPipeline(
@@ -271,6 +284,7 @@ export class ExGameScene{
             freeMateial:freeMateial,
             boomMateial:boomMateial,
             lensFlareSystem3:lensFlareSystem3,
+            pickMesh:pickMesh,
         }
 
         console.log(this.display)

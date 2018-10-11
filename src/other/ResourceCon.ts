@@ -56,6 +56,8 @@ export class ResourceCon {
                 {name:"map3", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"map_3.jpg"},
                 {name:"logo", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"logo.png"},
                 {name:"jiantou", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou.png"},
+                {name:"jiantou2", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou2.png"},
+                {name:"jiantou3", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou3.png"},
             ],
             models:[
                
@@ -67,6 +69,7 @@ export class ResourceCon {
             ],
             textures:[
                 {name:"grass", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"grass.png"},
+                {name:"boom", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"boom.jpg"},
                 {name:"grass2", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"grass.jpg"},
                 {name:"skybox13", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"skybox13.png"},
                 {name:"ground", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"ground.jpg"},
