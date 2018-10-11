@@ -259,8 +259,8 @@ export class ExGameSceneCon extends GameScenes{
         this.probe.attachToMesh(this.display.cameraBox); */
 
         this.scene.collisionsEnabled = false;
-        for(var i=0;i<=60;i++){
-            this.frees[i]= BABYLON.MeshBuilder.CreateBox("frees", {height:  0.2, width: 0.2, depth: 5}, this.scene);
+        for(var i=0;i<=160;i++){
+            this.frees[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  2, diameterY: 2, diameterZ: 14}, this.scene);
             this.frees[i].lifeState=false;
             this.frees[i].isPickable=false;
             this.frees[i].material=this.display.freeMateial;
@@ -269,8 +269,9 @@ export class ExGameSceneCon extends GameScenes{
            // this.frees[i].rotation=new BABYLON.Vector3(0,0.3,Math.PI*0.5)
         }
 
-        for(var i=0;i<=60;i++){
+        for(var i=0;i<=160;i++){
             this.booms[i]= BABYLON.MeshBuilder.CreateSphere("boom", {diameter: 10}, this.scene);
+            this.booms[i].boom=new TWEEN.Tween(this.booms[i].scaling);
             this.booms[i].lifeState=false;
             this.booms[i].isPickable=false;
             this.booms[i].material=this.display.boomMateial;
@@ -296,8 +297,8 @@ export class ExGameSceneCon extends GameScenes{
         console.log(sky) */
 
         this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
-        this.scene.fogDensity = 0.0002;
-        this.scene.fogColor = new BABYLON.Color3(1,1,1);
+        this.scene.fogDensity = 0.00005;
+        this.scene.fogColor = new BABYLON.Color3(0.8,0.8,0.8);
 
 
         
@@ -315,7 +316,7 @@ export class ExGameSceneCon extends GameScenes{
 
         //this.scene.environmentTexture=probe.cubeTexture;
         this.scene.environmentTexture=AssetsManager.ins.resourceObject["cubeTextures"]["gameScene"]["skybox"];
-
+        this.scene.workerCollisions=true;
         this.scene.getMeshByName("__root__").getChildMeshes(false,(mesh)=>{
             console.log(mesh)
             console.log(mesh.name)
@@ -340,7 +341,9 @@ export class ExGameSceneCon extends GameScenes{
         this.display.cameraBox.scaling=new BABYLON.Vector3(10,10,10)
       //  this.scene.getMeshByName("default").material=this.display.terrainMaterial
         this.scene.getMeshByName("default").isPickable=true;
-        this.scene.getMeshByName("default").scaling=new BABYLON.Vector3(10,10,10);
+        this.scene.getMeshByName("default").scaling=new BABYLON.Vector3(100,100,100);
+        this.scene.getMeshByName("default").material.diffuseTexture.uScale=4;
+        this.scene.getMeshByName("default").material.diffuseTexture.vScale=4;
         this.display.cameraBox.position.y=-10;
         this.display.camera.target=this.display.cameraBox.position;
        // this.scene.beginAnimation(this.scene.skeletons[0],6,6.001, false);
@@ -366,7 +369,7 @@ export class ExGameSceneCon extends GameScenes{
 	
 	    //var length = 100;
 	
-	    this.ray = new BABYLON.Ray(origin, direction, 1000);
+	    this.ray = new BABYLON.Ray(origin, direction, 3000);
 
         
         
@@ -491,7 +494,13 @@ export class ExGameSceneCon extends GameScenes{
        //空格状态
     private canJump = false;
        //速度状态
-    private speedCharacter=-0.5;
+    private speedCharacter=-1;
+
+    //飞行速度
+    private flySpeed=4;
+
+    //子弹速度
+    private fireSpeed=5;
 
     private character
 
@@ -569,7 +578,7 @@ export class ExGameSceneCon extends GameScenes{
 
         this.frees.forEach((free,i)=>{
             if(free.lifeState==true){
-                var forword=new BABYLON.Vector3(free.forward.x*10*this.times,free.forward.y*10*this.times,free.forward.z*10*this.times)
+                var forword=new BABYLON.Vector3(free.forward.x*10*this.times*this.fireSpeed,free.forward.y*10*this.times*this.fireSpeed,free.forward.z*10*this.times*this.fireSpeed)
                 free.moveWithCollisions(forword);
                 free.isVisible=true;
 
@@ -596,7 +605,18 @@ export class ExGameSceneCon extends GameScenes{
     
                      if(jl2<=50){
                         free.lifeState=false;
-                        this.booms[i].position=new BABYLON.Vector3(free.boomPosition.x,free.boomPosition.y,free.boomPosition.z);
+                        this.booms[i].position=new BABYLON.Vector3(free.position.x,free.position.y,free.position.z);
+                      //  this.booms[i].scaling=new BABYLON.Vector3(1,1,1);
+                      this.booms[i].scaling.x=4;
+                      this.booms[i].scaling.y=4;
+                      this.booms[i].scaling.z=4;
+                      this.booms[i].boom.to({ x:1 ,y:1,z:1}, 1000);
+                      this.booms[i].boom.start();
+                      this.booms[i].boom.onComplete(()=>{
+                          this.booms[i].scaling.x=0;
+                          this.booms[i].scaling.y=0;
+                          this.booms[i].scaling.z=0;
+                       })
                         free.boomPosition=null;
                      }
                  }
@@ -641,7 +661,7 @@ if (balloon3.intersectsPoint(pointToIntersect)){
                     this.display.cameraBox.position.z
                     )
 
-                if(jl>=600){
+                if(jl>=3000){
                     free.lifeState=false;
                     free.boomPosition=null;
                 /*     free.position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
@@ -733,7 +753,7 @@ if (balloon3.intersectsPoint(pointToIntersect)){
                // console.log("2223355")
             }
     
-            var forword=new BABYLON.Vector3(this.character.forward.x*2*this.times,this.character.forward.y*2*this.times,this.character.forward.z*2*this.times)
+            var forword=new BABYLON.Vector3(this.character.forward.x*2*this.times*this.flySpeed,this.character.forward.y*2*this.times*this.flySpeed,this.character.forward.z*2*this.times*this.flySpeed)
      
             this.character.moveWithCollisions(forword);
 
@@ -779,14 +799,16 @@ if (balloon3.intersectsPoint(pointToIntersect)){
                 var rotate3D =  (event)=> {
 
                     if(this.freeView==false){
-                        this.moveX = this.moveX + event.movementX;
+                       
+                        var _moveX =this.moveX + event.movementX;
+
+                        if(_moveX>=1500||_moveX<=-1500){
+                            this.moveX=this.moveX
+                            _moveX=this.moveX
+                        }else{
+                            this.moveX = _moveX;
+                        }
                         this.moveY = this.moveY + event.movementY;
-    
-                       // console.log(event)
-    
-                      //  console.log(this.moveY)
-    
-                     // if(-this.moveX*0.001)
     
                         if(this.moveX*0.001>Math.PI*2){
                             this.moveX=0

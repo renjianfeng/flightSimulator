@@ -39,6 +39,9 @@ export class ExGameScene{
         camera.attachControl(SceneManager.ins.canvas, false);
         camera.upperRadiusLimit=27
         camera.lowerRadiusLimit=-27
+        console.log("camera")
+        console.log(camera)
+       
        
 
      
@@ -88,7 +91,7 @@ export class ExGameScene{
         camera2.detachControl(SceneManager.ins.canvas);
         this.scene.activeCamera=camera2;
         camera2.minZ=-5;
-        camera2.maxZ=10000;
+        camera2.maxZ=2000000;
         camera2.parent=cameraBox;
        
         var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", this.scene);
@@ -98,10 +101,12 @@ export class ExGameScene{
         skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
         //   skyboxMaterial.emissiveColor  = new BABYLON.Color3(0, 0, 0);
         skyboxMaterial.disableLighting = false;
+        
 
-        var skySphere = BABYLON.MeshBuilder.CreateSphere("skySphere", {diameter: 10000}, this.scene);
+        var skySphere = BABYLON.MeshBuilder.CreateSphere("skySphere", {diameter: 100000}, this.scene);
         skySphere.rotation.x=Math.PI
         skySphere.material=skyboxMaterial
+        //skySphere.applyFog=false;
 
         var camera3 = new BABYLON.FollowCamera("FollowCam", new BABYLON.Vector3(200, -300, 150), this.scene);
         camera3.radius = -10;
@@ -116,6 +121,7 @@ export class ExGameScene{
         camera3.fov=1.3
         camera3.detachControl(SceneManager.ins.canvas);
         camera3.update()
+        camera3.maxZ=2000000;
 
         this.scene.activeCamera=camera3;
 
@@ -135,7 +141,8 @@ export class ExGameScene{
         console.log("boomMateial")
         console.log(boomMateial)
         boomMateial.disableLighting=true;
-        boomMateial["emissiveColor"]=new BABYLON.Color3(255/255,100/255,0)
+        boomMateial["emissiveColor"]=new BABYLON.Color3(254/255,82/255,22/255)
+        boomMateial["diffuseColor"]=new BABYLON.Color3(1,1,1)
 
 
        /*  var pipeline = new BABYLON.StandardRenderingPipeline(
