@@ -451,7 +451,7 @@ export class FlyCon{
           console.log("ss")
           console.log(ss)
           if(ss){
-            this.musics.win.setVolume(0.8)
+            this.musics.win.setVolume(0.3)
           }else{
             this.musics.win.setVolume(0)
           }
@@ -503,18 +503,15 @@ export class FlyCon{
             }else{ */
                 //this.musics.win.setVolume(1)
                // window.speechSynthesis.resume()
+               localStorage.msg=this.warningText
                if(window.speechSynthesis.speaking==false){
-                   localStorage.msg=this.warningText
                    if(this.warningText!=""){
                     var msg = new SpeechSynthesisUtterance(this.warningText);
                     window.speechSynthesis.speak(msg);
                    }
-                   this.tipsText.text=localStorage.msg;
                }else{
                    this.tipsText.text=localStorage.msg;
                }
-
-               console.log()
 
                if(this.tipsText.text==""){
                   this.tipsBg.alpha=0

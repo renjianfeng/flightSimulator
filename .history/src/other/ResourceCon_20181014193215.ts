@@ -21,7 +21,7 @@ export class ResourceCon {
         gameScene={
             binarys:[
                 {name:"zhanji", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"zhanji4.mp3"},
-                {name:"qiang", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"qiang7.mp3"},
+                {name:"qiang", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"qiang5.mp3"},
                 {name:"win", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"win.mp3"},
                // {name:"sm14", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"sm14.glb"},
             ],

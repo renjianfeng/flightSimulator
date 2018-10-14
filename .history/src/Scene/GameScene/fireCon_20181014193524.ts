@@ -83,7 +83,7 @@ export class FireCon{
 
         //创建子弹列表
         for(var i=0;i<=160;i++){
-            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  0.5, diameterY: 0.5, diameterZ: 80}, this.scene);
+            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  0.5, diameterY: 0.5, diameterZ: 50}, this.scene);
             this.bullets[i].lifeState=false;
             this.bullets[i].isPickable=false;
             this.bullets[i].material=this.display.freeMateial;
@@ -135,7 +135,6 @@ export class FireCon{
         setInterval(()=>{
             if(this.freeState){
                 this.musics.qiang.play()
-               // this.musics.qiang.setVolume(1)
                 var ram=Math.random()/100;
                 if(this.j<=this.bullets.length-1){
                     this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram,this.display.cameraBox.absolutePosition.z) ;
@@ -149,8 +148,6 @@ export class FireCon{
                     this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
                     this.bullets[this.j].lifeState=true;
                 }
-            }else{
-               // this.musics.qiang.setVolume(0)
             }
         },100)
     }

@@ -83,7 +83,7 @@ export class FireCon{
 
         //创建子弹列表
         for(var i=0;i<=160;i++){
-            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  0.5, diameterY: 0.5, diameterZ: 80}, this.scene);
+            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  0.5, diameterY: 0.5, diameterZ: 60}, this.scene);
             this.bullets[i].lifeState=false;
             this.bullets[i].isPickable=false;
             this.bullets[i].material=this.display.freeMateial;
