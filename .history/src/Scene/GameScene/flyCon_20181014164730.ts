@@ -46,7 +46,6 @@ export class FlyCon{
     private musics;
 
     private tipsText;
-    private tipsBg;
 
    
 
@@ -160,39 +159,31 @@ export class FlyCon{
 
     }
 
-    
-    this.tipsBg = new BABYLON.GUI.Rectangle();
-   
-    this.tipsBg.alpha=0.8;
-    this.tipsBg.width = "620px";
-    this.tipsBg.height = "140px";
-   // this.rect1.cornerRadius = 5;
-   this.tipsBg.color = "#009855";
-   this.tipsBg.background = "#444444";
-   this.tipsBg.alpha = 0.2;
-   this.tipsBg.top="20px"
-   this.tipsBg.thickness =1;
-   this.tipsBg.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-   this.tipsBg.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER; 
 
     this.tipsText = new BABYLON.GUI.TextBlock();
     this.tipsText.width="600px";
-    this.tipsText.height = "140px";
-    this.tipsText.color="#ffffff"
+    this.tipsText.color="#FF7F24"
     this.tipsText.fontSize="14px";
     this.tipsText.text="提示";
     //this.tipsText.color="#ffffff";
     this.tipsText.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-  //  this.tipsText.textVerticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-    this.tipsText.top="20px"
+    this.tipsText.textVerticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+    this.tipsText.top="50px"
     this.tipsText.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER; 
 
+    var tipsBg = new BABYLON.GUI.Rectangle();
+   
+    tipsBg.alpha=0.8;
+    tipsBg.width = "700px";
+    tipsBg.height = "400px";
+   // this.rect1.cornerRadius = 5;
+    tipsBg.color = "#009855";
+    tipsBg.thickness =1;
   
   
     this.display.advancedTexture.addControl( this.rect2);
-    this.display.advancedTexture.addControl( this.tipsBg);
     this.display.advancedTexture.addControl(this.tipsText);
-   
+    this.display.advancedTexture.addControl( tipsBg);
 
     }
 
@@ -515,12 +506,6 @@ export class FlyCon{
                    
                }else{
                  this.tipsText.text=localStorage.msg;
-               }
-
-               if(this.tipsText.text==""){
-                  this.tipsBg.alpha=0
-               }else{
-                  this.tipsBg.alpha=0.4
                }
                
             

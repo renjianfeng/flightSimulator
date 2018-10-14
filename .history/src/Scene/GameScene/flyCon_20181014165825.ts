@@ -168,7 +168,7 @@ export class FlyCon{
     this.tipsBg.height = "140px";
    // this.rect1.cornerRadius = 5;
    this.tipsBg.color = "#009855";
-   this.tipsBg.background = "#444444";
+   this.tipsBg.background = "#8FBC8F";
    this.tipsBg.alpha = 0.2;
    this.tipsBg.top="20px"
    this.tipsBg.thickness =1;
@@ -190,9 +190,8 @@ export class FlyCon{
   
   
     this.display.advancedTexture.addControl( this.rect2);
-    this.display.advancedTexture.addControl( this.tipsBg);
     this.display.advancedTexture.addControl(this.tipsText);
-   
+    this.display.advancedTexture.addControl( this.tipsBg);
 
     }
 

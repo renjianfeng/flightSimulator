@@ -190,9 +190,8 @@ export class FlyCon{
   
   
     this.display.advancedTexture.addControl( this.rect2);
-    this.display.advancedTexture.addControl( this.tipsBg);
     this.display.advancedTexture.addControl(this.tipsText);
-   
+    this.display.advancedTexture.addControl( this.tipsBg);
 
     }
 

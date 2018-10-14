@@ -56,7 +56,7 @@ export class ExGameSceneCon extends GameScenes{
        // console.log(msg);
 
        setTimeout(()=>{
-        localStorage.msg="你好，欢迎驾驶台风战机， \n 你可以通过鼠标左键进行射击， \n 右键切换视野，通过拖动鼠标控制飞机飞行， \n 当您处于第一人称时， \n 您可以通过长按空格键并且拖动鼠标查看自由视野。"
+        localStorage.msg="你好，欢迎驾驶台风战机，你可以通过鼠标左键进行射击，右键切换视野，通过拖动鼠标控制飞机飞行，当您处于第一人称时，您可以通过长按空格键并且拖动鼠标查看自由视野。"
 
         var msg = new SpeechSynthesisUtterance(localStorage.msg);
        

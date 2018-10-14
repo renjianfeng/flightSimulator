@@ -45,9 +45,6 @@ export class FlyCon{
 
     private musics;
 
-    private tipsText;
-    private tipsBg;
-
    
 
     private creatMusic(){
@@ -160,39 +157,9 @@ export class FlyCon{
 
     }
 
-    
-    this.tipsBg = new BABYLON.GUI.Rectangle();
-   
-    this.tipsBg.alpha=0.8;
-    this.tipsBg.width = "620px";
-    this.tipsBg.height = "140px";
-   // this.rect1.cornerRadius = 5;
-   this.tipsBg.color = "#009855";
-   this.tipsBg.background = "#444444";
-   this.tipsBg.alpha = 0.2;
-   this.tipsBg.top="20px"
-   this.tipsBg.thickness =1;
-   this.tipsBg.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-   this.tipsBg.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER; 
 
-    this.tipsText = new BABYLON.GUI.TextBlock();
-    this.tipsText.width="600px";
-    this.tipsText.height = "140px";
-    this.tipsText.color="#ffffff"
-    this.tipsText.fontSize="14px";
-    this.tipsText.text="提示";
-    //this.tipsText.color="#ffffff";
-    this.tipsText.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-  //  this.tipsText.textVerticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-    this.tipsText.top="20px"
-    this.tipsText.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER; 
-
-  
   
     this.display.advancedTexture.addControl( this.rect2);
-    this.display.advancedTexture.addControl( this.tipsBg);
-    this.display.advancedTexture.addControl(this.tipsText);
-   
 
     }
 
@@ -211,7 +178,7 @@ export class FlyCon{
         //创建音频
         this.creatMusic()
 
-       // this.sayWarning()
+        this.sayWarning()
 
        /*  setTimeout(()=>{
             this.musics.zhanji.play()
@@ -381,10 +348,10 @@ export class FlyCon{
            // var forward = new BABYLON.Vector3(0,-1000,0);	
            this.pickCall((_jl)=>{
                 this.warnings[0]=1
-                console.log("下方危险"+_jl)
-                this.warningText="注意地面撞击，距离"+parseInt(_jl.toString())+"米";
+                console.log("前方危险"+_jl)
+                this.warningText="注意前方撞击，距离"+parseInt(_jl.toString())+"米";
            },()=>{
-              // console.log("前方")
+               console.log("前方")
                this.warnings[0]=0
            },this.obstacleCount)
            
@@ -450,15 +417,10 @@ export class FlyCon{
           });
           console.log("ss")
           console.log(ss)
-          if(ss){
-            this.musics.win.setVolume(0.3)
-          }else{
-            this.musics.win.setVolume(0)
-          }
           console.log(this.warnings)
          //this.starUi.moveToVector3(this.hit.pickedPoint,this.scene)
       
-         this.sayWarning()
+
    
     }
 
@@ -484,12 +446,10 @@ export class FlyCon{
                 }else{
                     call2()
                     this.warningText=""
-                   // localStorage.msg=this.warningText
                 }
         }else{
             call2()
             this.warningText=""
-          //  localStorage.msg=this.warningText
         //this.starUi.linkWithMesh(this.display.pickMesh)
         }
     }
@@ -497,38 +457,16 @@ export class FlyCon{
 
     private sayWarning(){
 
-       // setInterval(()=>{
-          /*   if(this.warningText==""){
-                //this.musics.win.setVolume(0)
-            }else{ */
-                //this.musics.win.setVolume(1)
-               // window.speechSynthesis.resume()
-               if(window.speechSynthesis.speaking==false){
-                   localStorage.msg=this.warningText
-                    var msg = new SpeechSynthesisUtterance(this.warningText);
-                    //window.speechSynthesis.stop();
-                // msg.volume=4;
-                    console.log(msg);
-                    window.speechSynthesis.speak(msg);
-                    console.log("window.speechSynthesis")
-                    console.log(window.speechSynthesis)
-                   
-               }else{
-                 this.tipsText.text=localStorage.msg;
-               }
-
-               if(this.tipsText.text==""){
-                  this.tipsBg.alpha=0
-               }else{
-                  this.tipsBg.alpha=0.4
-               }
-               
-            
-
-           
-
-            console.log(window.speechSynthesis)
-        //},200)
+        setInterval(()=>{
+            if(this.warningText==""){
+                this.musics.win.setVolume(0)
+            }else{
+                this.musics.win.setVolume(1)
+                var msg = new SpeechSynthesisUtterance(this.warningText);
+                console.log(msg);
+                window.speechSynthesis.speak(msg);
+            }
+        },500)
     }
 
 
@@ -901,9 +839,6 @@ export class FlyCon{
             this.scene.activeCameras.push(this.display.camera4);
             this.scene.activeCameras.push(this.display.camera5);
             this.scene.getMeshByName("驾驶员头").isVisible=true;
-
-            this.musics.zhanji.setVolume(1)
-            this.musics.win.setVolume(0.3)
            // this.display.camera3.alpha=-Math.PI*1;
            // this.display.camera3.beta=1.260483446598473
           //  this.display.camera.attachControl(SceneManager.ins.canvas,true);
@@ -912,8 +847,6 @@ export class FlyCon{
           //  this.display.camera.detachControl(SceneManager.ins.canvas,false);
         //    this.scene.activeCamera=this.display.camera2
             this.scene.activeCameras=[]
-            this.musics.zhanji.setVolume(0.5)
-            this.musics.win.setVolume(0.3)
             this.scene.activeCameras.push(this.display.camera2);
             this.scene.activeCameras.push(this.display.camera4);
             this.scene.activeCameras.push(this.display.camera5);

@@ -51,17 +51,11 @@ export class ExGameSceneCon extends GameScenes{
         this.scene=SceneManager.ins.scene;
         this.display=ExGameScene.ins.display;
 
+        var msg = new SpeechSynthesisUtterance("你好，欢迎驾驶台风战机，你可以通过鼠标左键进行射击，右键切换视野，通过拖动鼠标控制飞机飞行，当您处于第一人称时，您可以通过长按空格键并且拖动鼠标查看自由视野。");
         //window.speechSynthesis.stop();
        // msg.volume=4;
-       // console.log(msg);
-
-       setTimeout(()=>{
-        localStorage.msg="你好，欢迎驾驶台风战机， \n 你可以通过鼠标左键进行射击， \n 右键切换视野，通过拖动鼠标控制飞机飞行， \n 当您处于第一人称时， \n 您可以通过长按空格键并且拖动鼠标查看自由视野。"
-
-        var msg = new SpeechSynthesisUtterance(localStorage.msg);
-       
-           window.speechSynthesis.speak(msg);
-       },1000)
+        console.log(msg);
+        window.speechSynthesis.speak(msg);
 
         //隐藏UI
         SceneManager.ins.engine.displayLoadingUI();
