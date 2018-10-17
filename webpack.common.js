@@ -1,8 +1,5 @@
 const path = require('path');
 
-function srcPath(subdir) {
-    return path.join(__dirname, "src", subdir);
-}
 module.exports = {
     entry: './src/Main.ts',
     module: {
