@@ -58,11 +58,13 @@ export class ResourceCon {
                 {name:"map3", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"map_3.jpg"},
                 {name:"logo", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"logo.png"},
                 {name:"jiantou", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou.png"},
-                {name:"jiantou2", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou2.png"},
+                {name:"jiantou2", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou4.png"},
                 {name:"jiantou3", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou3.png"},
                 {name:"lensdirt", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"lensdirt.jpg"},
                 {name:"lens", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"lens.jpg"},
                 {name:"lens2", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"lens2.jpg"},
+                {name:"ico_b", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"ico_b.png"},
+                {name:"ico_bg", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"ico_bg.png"},
             ],
             models:[
                

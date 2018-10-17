@@ -280,11 +280,17 @@ export class ExGameScene{
 
          //添加光晕
 
-         var lens3 = BABYLON.Mesh.CreateSphere("centerHidenPick", 16, 0.1, this.scene);
-         lens3.visibility=0
-         lens3.position=new BABYLON.Vector3(-300000, 10000, 0)
+         var lens3 = BABYLON.Mesh.CreateSphere("centerHidenPick", 16, 10, this.scene);
+         lens3.occlusionType = BABYLON.AbstractMesh.OCCLUSION_TYPE_OPTIMISTIC;
+
+         lens3.occlusionQueryAlgorithmType = BABYLON.AbstractMesh.OCCLUSION_ALGORITHM_TYPE_CONSERVATIVE;
+         lens3.isOccluded = true;
+         //lens3.visibility=0
+         lens3.position=new BABYLON.Vector3(-30000, 1000, 0)
 
          var lensFlareSystem3 = new BABYLON.LensFlareSystem("lensFlareSystem", lens3, this.scene);
+         lensFlareSystem3["isBlocker"]=true;
+        // lensFlareSystem3.isEnabled=false;
          var flare00 = new BABYLON.LensFlare(0.3, 1.3, new BABYLON.Color3(1,1,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["ty"].src, lensFlareSystem3);
        /*   var flare01 = new BABYLON.LensFlare(0.13, 1, new BABYLON.Color3(0,1,0), AssetsManager.ins.resourceObject["images"]["gameScene"]["Bphl4qj"].src, lensFlareSystem3);
          var flare02 = new BABYLON.LensFlare(0.2, 1, new BABYLON.Color3(0,0,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["Bphl4qj"].src, lensFlareSystem3);
@@ -339,6 +345,7 @@ export class ExGameScene{
             lensFlareSystem3:lensFlareSystem3,
             pickMesh:pickMesh,
             advancedTexture:advancedTexture,
+            lens3:lens3,
         }
 
         console.log(this.display)

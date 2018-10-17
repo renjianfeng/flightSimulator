@@ -48,6 +48,9 @@ export class FlyCon{
     private tipsText;
     private tipsBg;
 
+    private ico_b
+    private ico_bg
+
    
 
     private creatMusic(){
@@ -134,7 +137,7 @@ export class FlyCon{
         b5[i].top=50*i*3;
         b5[i].left="-5px"
         b5[i].width = "300px";
-        b5[i].height = "20px";
+        b5[i].height = "40px";
         //this.rect1.cornerRadius = 5;
        // b5[i].background = "#009855";
         b5[i].thickness = 0;
@@ -188,10 +191,50 @@ export class FlyCon{
     this.tipsText.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER; 
 
   
+
+    this.ico_bg = new BABYLON.GUI.Image("ico_bg", AssetsManager.ins.resourceObject["images"]["gameScene"]["ico_bg"].src);
+    this.ico_bg.width = "200px";
+    console.log( "this.ico_bg")
+    console.log( this.ico_bg)
+    this.ico_bg.height = "200px";
+  //  this.ico_bg.scaleX = -1;
+   // this.ico_bg.top="-192px";
+   // this.ico_b.left="110px";
+    this.ico_bg.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+    this.ico_bg.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+
+
+    this.ico_b = new BABYLON.GUI.Image("ico_b", AssetsManager.ins.resourceObject["images"]["gameScene"]["ico_b"].src);
+    this.ico_b.width = "90px";
+    console.log( "this.ico_b")
+    console.log( this.ico_b)
+    this.ico_b.height = "90px";
+   // this.ico_b.scaleX = -1;
+  //  this.ico_b.top="-192px";
+   // this.ico_b.left="110px";
+    this.ico_b.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+    this.ico_b.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+
+    
+
+
+    var b_bg=new BABYLON.GUI.Rectangle();
+    //b_bg.width="100px";
+   // b_bg.height="100px";
+    b_bg.top="30%"
+    b_bg.left="30%"
+    b_bg.alpha=0.9
+    b_bg.thickness = 0;
+    b_bg.verticalAlignment=BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
+    b_bg.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+    b_bg.addControl(this.ico_bg)
+    b_bg.addControl(this.ico_b)
+
   
     this.display.advancedTexture.addControl( this.rect2);
     this.display.advancedTexture.addControl( this.tipsBg);
-    this.display.advancedTexture.addControl(this.tipsText);
+    this.display.advancedTexture.addControl( this.tipsText);
+    this.display.advancedTexture.addControl( b_bg);
    
 
     }
@@ -382,7 +425,7 @@ export class FlyCon{
            this.pickCall((_jl)=>{
                 this.warnings[0]=1
                 console.log("下方危险"+_jl)
-                this.warningText="注意地面撞击，距离"+parseInt(_jl.toString())+"米";
+                this.warningText="Warning, Bottom collision，"+parseInt(_jl.toString())+" metres away";
            },()=>{
               // console.log("前方")
                this.warnings[0]=0
@@ -395,7 +438,7 @@ export class FlyCon{
              this.pickCall((_jl)=>{
                 this.warnings[1]=1
                     console.log("上方危险"+_jl)
-                    this.warningText="注意上方撞击，距离"+parseInt(_jl.toString())+"米";
+                    this.warningText="Warning, Top collision，"+parseInt(_jl.toString())+" metres away";
                   //  this.musics.win.setVolume(1)
             },()=>{
                 console.log("上方")
@@ -408,7 +451,7 @@ export class FlyCon{
             this.pickCall((_jl)=>{
                 this.warnings[2]=1
                     console.log("前方危险"+_jl)
-                    this.warningText="注意前方撞击，距离"+parseInt(_jl.toString())+"米";
+                    this.warningText="Warning, Front  collision，"+parseInt(_jl.toString())+" metres away";
                    // this.musics.win.setVolume(1)
             },()=>{
                 this.warnings[2]=0
@@ -420,7 +463,7 @@ export class FlyCon{
               this.pickCall((_jl)=>{
                 this.warnings[3]=1
                     console.log("左方危险"+_jl)
-                    this.warningText="注意左方撞击，距离"+parseInt(_jl.toString())+"米";
+                    this.warningText="Warning, Left collision，"+parseInt(_jl.toString())+" metres away";
                   //  this.musics.win.setVolume(1)
             },()=>{
                 this.warnings[3]=0
@@ -433,7 +476,7 @@ export class FlyCon{
             this.pickCall((_jl)=>{
                 this.warnings[4]=1
                     console.log("右方危险"+_jl)
-                    this.warningText="注意右方撞击，距离"+parseInt(_jl.toString())+"米";
+                    this.warningText="Warning, Right collision，"+parseInt(_jl.toString())+" metres away";
                    // this.musics.win.setVolume(1)
             },()=>{
                 this.warnings[4]=0
@@ -507,6 +550,7 @@ export class FlyCon{
                    localStorage.msg=this.warningText
                    if(this.warningText!=""){
                     var msg = new SpeechSynthesisUtterance(this.warningText);
+                    msg.lang="en";
                     window.speechSynthesis.speak(msg);
                    }
                    this.tipsText.text=localStorage.msg;
@@ -578,6 +622,9 @@ export class FlyCon{
                         if(this.moveX*0.001<=-Math.PI*2){
                             this.moveX=0
                         }
+
+                        this.ico_b.top=this.moveY/30
+                        this.ico_b.left=this.moveX/30
                     }
                  
                 };

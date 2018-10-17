@@ -160,5 +160,13 @@ export class ExGameSceneCon extends GameScenes{
         this.times= 60/SceneManager.ins.engine.getFps();
         FireCon.ins.update(this.times)
         FlyCon.ins.update(this.times)
+
+        if(this.display.lens3.isOccluded){
+            console.log("被遮挡")
+            this.display.lensFlareSystem3.isEnabled=false;
+            
+        }else{
+            this.display.lensFlareSystem3.isEnabled=true;
+        }
     }
 }
