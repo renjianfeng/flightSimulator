@@ -243,7 +243,7 @@ export class ExGameScene{
         /**
          * 平行光
          * */
-        var light3 = new BABYLON.DirectionalLight("DirectionalLight", new BABYLON.Vector3(0.2, -0.3, 0.2), this.scene);
+        var light3 = new BABYLON.DirectionalLight("DirectionalLight", new BABYLON.Vector3(0.2, -0.1, 0.2), this.scene);
         light3.intensity=3
         //  light3.autoUpdateExtends=false;
         light3.shadowFrustumSize=50

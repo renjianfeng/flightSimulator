@@ -60,7 +60,6 @@ export class ExGameSceneCon extends GameScenes{
         localStorage.msg="Hello, welcome to fly the typhoon fighter. \n You can shoot by the left button of the mouse,\n change the view by right button, \nand control the flight by dragging the mouse. \nWhen you are in the first person, \nyou can press the space bar and drag the mouse to view the free view."
 
         var msg = new SpeechSynthesisUtterance(localStorage.msg);
-        msg.lang="en";
        
            window.speechSynthesis.speak(msg);
        },1000)

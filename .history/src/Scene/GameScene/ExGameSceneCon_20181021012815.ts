@@ -57,10 +57,9 @@ export class ExGameSceneCon extends GameScenes{
        // console.log(msg);
 
        setTimeout(()=>{
-        localStorage.msg="Hello, welcome to fly the typhoon fighter. \n You can shoot by the left button of the mouse,\n change the view by right button, \nand control the flight by dragging the mouse. \nWhen you are in the first person, \nyou can press the space bar and drag the mouse to view the free view."
+        localStorage.msg="你好，欢迎驾驶台风战机， \n 你可以通过鼠标左键进行射击， \n 右键切换视野，通过拖动鼠标控制飞机飞行， \n 当您处于第一人称时， \n 您可以通过长按空格键并且拖动鼠标查看自由视野。"
 
         var msg = new SpeechSynthesisUtterance(localStorage.msg);
-        msg.lang="en";
        
            window.speechSynthesis.speak(msg);
        },1000)

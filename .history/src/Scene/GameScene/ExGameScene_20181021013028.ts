@@ -257,7 +257,7 @@ export class ExGameScene{
                 cameraBox.position.y+1,
                 cameraBox.position.z-0
             );
-        },50)
+        },100)
 
 
         var shadowGenerator = new BABYLON.ShadowGenerator(2048, light3);

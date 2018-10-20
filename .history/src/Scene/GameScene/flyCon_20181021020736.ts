@@ -498,15 +498,9 @@ export class FlyCon{
           console.log("ss")
           console.log(ss)
           if(ss){
-          
-            if(this.jl>50){
-                this.musics.win.setVolume(0)
-                this.musics.win2.setVolume(2)
-            }else{
-                this.musics.win.setVolume(0.8)
-                this.musics.win2.setVolume(0)
-            }
-           
+            
+            this.musics.win.setVolume(0.8)
+            this.musics.win2.setVolume(0.8)
           }else{
             this.musics.win.setVolume(0)
             this.musics.win2.setVolume(0)

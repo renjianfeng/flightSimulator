@@ -246,9 +246,9 @@ export class ExGameScene{
         var light3 = new BABYLON.DirectionalLight("DirectionalLight", new BABYLON.Vector3(0.2, -0.3, 0.2), this.scene);
         light3.intensity=3
         //  light3.autoUpdateExtends=false;
-        light3.shadowFrustumSize=50
-        light3.shadowMinZ=-50
-        light3.shadowMaxZ=50
+        light3.shadowFrustumSize=200
+        light3.shadowMinZ=-100
+        light3.shadowMaxZ=100
 
 
         setInterval(()=>{
@@ -257,10 +257,10 @@ export class ExGameScene{
                 cameraBox.position.y+1,
                 cameraBox.position.z-0
             );
-        },50)
+        },100)
 
 
-        var shadowGenerator = new BABYLON.ShadowGenerator(2048, light3);
+        var shadowGenerator = new BABYLON.ShadowGenerator(1024, light3);
         shadowGenerator.bias = 0.0004;
         shadowGenerator.usePercentageCloserFiltering = true;
         shadowGenerator.filteringQuality=0.1;

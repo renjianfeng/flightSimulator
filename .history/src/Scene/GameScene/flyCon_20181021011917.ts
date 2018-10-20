@@ -68,10 +68,6 @@ export class FlyCon{
             win:new BABYLON.Sound("zhanji",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["win"]["url"]] , this.scene,()=>{
                 this.musics.win.play()
             },{loop:true}),
-
-            win2:new BABYLON.Sound("zhanji",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["win2"]["url"]] , this.scene,()=>{
-                this.musics.win2.play()
-            },{loop:true}),
            
         }
 
@@ -498,18 +494,10 @@ export class FlyCon{
           console.log("ss")
           console.log(ss)
           if(ss){
-          
-            if(this.jl>50){
-                this.musics.win.setVolume(0)
-                this.musics.win2.setVolume(2)
-            }else{
-                this.musics.win.setVolume(0.8)
-                this.musics.win2.setVolume(0)
-            }
-           
+            //this.musics.win.setVolume(0.8)
+            this.musics.win.setVolume((100-this.jl)/100)
           }else{
             this.musics.win.setVolume(0)
-            this.musics.win2.setVolume(0)
           }
           console.log(this.warnings)
          //this.starUi.moveToVector3(this.hit.pickedPoint,this.scene)
@@ -536,14 +524,9 @@ export class FlyCon{
                 this.display.cameraBox.position.y, 
                 this.display.cameraBox.position.z, 
                 )
-
-
-            //    this.musics.win2.setPlaybackRate((100-_jl)/200+1)
-
                 if(_jl<=100){
                     call(_jl)
-                  
-                   // this.musics.win2.setPlaybackRate((100-_jl)/400+1)
+                   // this.musics.win.setPlaybackRate((100-_jl)/200+1)
                    // this.musics.win.setPlaybackRate(1)
                     this.jl=_jl
                     

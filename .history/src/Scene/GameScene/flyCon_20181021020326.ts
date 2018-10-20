@@ -498,18 +498,12 @@ export class FlyCon{
           console.log("ss")
           console.log(ss)
           if(ss){
-          
-            if(this.jl>50){
-                this.musics.win.setVolume(0)
-                this.musics.win2.setVolume(2)
-            }else{
-                this.musics.win.setVolume(0.8)
-                this.musics.win2.setVolume(0)
-            }
-           
+            
+            this.musics.win.setVolume(0.8)
+            //this.musics.win2.setVolume(0.8)
           }else{
             this.musics.win.setVolume(0)
-            this.musics.win2.setVolume(0)
+           // this.musics.win2.setVolume(0)
           }
           console.log(this.warnings)
          //this.starUi.moveToVector3(this.hit.pickedPoint,this.scene)
@@ -538,12 +532,12 @@ export class FlyCon{
                 )
 
 
-            //    this.musics.win2.setPlaybackRate((100-_jl)/200+1)
+                this.musics.win2.setVolume((100-_jl))
 
                 if(_jl<=100){
                     call(_jl)
                   
-                   // this.musics.win2.setPlaybackRate((100-_jl)/400+1)
+                   // this.musics.win.setPlaybackRate((100-_jl)/200+1)
                    // this.musics.win.setPlaybackRate(1)
                     this.jl=_jl
                     
