@@ -26,29 +26,7 @@ export class ResourceCon {
                // {name:"sm14", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"sm14.glb"},
             ],
             images:[
-               /*  {name:"test", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"cursor_default.png",},
-                {name:"beginBtn", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"beginBtn.png",},
-                {name:"bg", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"bg.jpg",},
-                {name:"close", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"close.png",},
-                {name:"win_m", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"win_m.png",},
-                {name:"bg_modle", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"bg_modle.png",},
-                {name:"btn_left", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"btn_left.png",},
-                {name:"btn_right", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"btn_right.png",},
-                {name:"btn_py", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"btn_py.png",},
-                {name:"btn_dq", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"btn_dq.png",},
-                {name:"prizeBtn", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"prizeBtn.png",},
-                {name:"ruleBtn", filePath:this.pathFirst+"src/Resource/gameScene/images/", fileName:"ruleBtn.png",}, */
-
-                //光晕
-                {name:"Bphl4qj", filePath:this.pathFirst+"src/Resource/gameScene/textures/light/", fileName:"Bphl4qj.png"},
-                {name:"HRsf4I5", filePath:this.pathFirst+"src/Resource/gameScene/textures/light/", fileName:"HRsf4I5.png"},
-                {name:"IIyZhcg", filePath:this.pathFirst+"src/Resource/gameScene/textures/light/", fileName:"IIyZhcg.png"},
-                {name:"it5c3Vr", filePath:this.pathFirst+"src/Resource/gameScene/textures/light/", fileName:"it5c3Vr.png"},
-                {name:"ty", filePath:this.pathFirst+"src/Resource/gameScene/textures/light/", fileName:"ty.png"},
-                {name:"XaJRD9j", filePath:this.pathFirst+"src/Resource/gameScene/textures/light/", fileName:"XaJRD9j.png"},
-
-                //ui
-
+            
                 {name:"after", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"after.jpg"},
                 {name:"night", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"night.jpg"},
                 {name:"rain", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"rain.jpg"},
@@ -61,8 +39,8 @@ export class ResourceCon {
                 {name:"jiantou2", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou4.png"},
                 {name:"jiantou3", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"jiantou3.png"},
                 {name:"lensdirt", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"lensdirt.jpg"},
-                {name:"lens", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"lens.jpg"},
-                {name:"lens2", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"lens2.jpg"},
+              //  {name:"lens", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"lens.jpg"},
+                {name:"lens2", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"lens4.jpg"},
                 {name:"ico_b", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"ico_b.png"},
                 {name:"ico_bg", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"ico_bg.png"},
             ],

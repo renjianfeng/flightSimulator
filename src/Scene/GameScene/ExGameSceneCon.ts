@@ -127,6 +127,11 @@ export class ExGameSceneCon extends GameScenes{
             mesh.isPickable=false;
             this.display.shadowGenerator.getShadowMap().renderList.push(mesh);
             mesh.receiveShadows = true;
+            if(mesh.name=="Glass"){
+                mesh.isBlocker=false;
+            }else{
+                mesh.isBlocker=true;
+            }
             if(mesh.material){
                 mesh.material.backFaceCulling=false;
                 console.log("mesh.material")
@@ -142,6 +147,7 @@ export class ExGameSceneCon extends GameScenes{
         this.display.cameraBox.scaling=new BABYLON.Vector3(10,10,10)
       //  this.scene.getMeshByName("default").material=this.display.terrainMaterial
         this.scene.getMeshByName("default").isPickable=true;
+        this.scene.getMeshByName("default").isBlocker=true;
         this.scene.getMeshByName("default").scaling=new BABYLON.Vector3(40,40,40);
         this.scene.getMeshByName("default").material.diffuseTexture.uScale=4;
         this.scene.getMeshByName("default").material.diffuseTexture.vScale=4;
@@ -163,10 +169,10 @@ export class ExGameSceneCon extends GameScenes{
 
         if(this.display.lens3.isOccluded){
             console.log("被遮挡")
-            this.display.lensFlareSystem3.isEnabled=false;
+          //  this.display.lensFlareSystem3.isEnabled=false;
             
         }else{
-            this.display.lensFlareSystem3.isEnabled=true;
+         //   this.display.lensFlareSystem3.isEnabled=true;
         }
     }
 }

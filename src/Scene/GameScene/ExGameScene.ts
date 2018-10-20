@@ -30,8 +30,6 @@ export class ExGameScene{
         this.scene.clearColor=new BABYLON.Color4(52/255,156/255,255/255)
       //  SceneManager.ins.engine.setHardwareScalingLevel(1)
 
-     
-
         /**
          * 室内相机校准模型
          * */
@@ -280,46 +278,19 @@ export class ExGameScene{
 
          //添加光晕
 
-         var lens3 = BABYLON.Mesh.CreateSphere("centerHidenPick", 16, 10, this.scene);
+         var lens3 = BABYLON.Mesh.CreateSphere("centerHidenPick", 16, 1, this.scene);
          lens3.occlusionType = BABYLON.AbstractMesh.OCCLUSION_TYPE_OPTIMISTIC;
 
          lens3.occlusionQueryAlgorithmType = BABYLON.AbstractMesh.OCCLUSION_ALGORITHM_TYPE_CONSERVATIVE;
          lens3.isOccluded = true;
          //lens3.visibility=0
-         lens3.position=new BABYLON.Vector3(-30000, 1000, 0)
+         lens3.position=new BABYLON.Vector3(-30000, 4000, 0)
 
          var lensFlareSystem3 = new BABYLON.LensFlareSystem("lensFlareSystem", lens3, this.scene);
          lensFlareSystem3["isBlocker"]=true;
-        // lensFlareSystem3.isEnabled=false;
-         var flare00 = new BABYLON.LensFlare(0.3, 1.3, new BABYLON.Color3(1,1,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["ty"].src, lensFlareSystem3);
-       /*   var flare01 = new BABYLON.LensFlare(0.13, 1, new BABYLON.Color3(0,1,0), AssetsManager.ins.resourceObject["images"]["gameScene"]["Bphl4qj"].src, lensFlareSystem3);
-         var flare02 = new BABYLON.LensFlare(0.2, 1, new BABYLON.Color3(0,0,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["Bphl4qj"].src, lensFlareSystem3);
-         var flare03 = new BABYLON.LensFlare(0.1, 0.8, new BABYLON.Color3(.5,.7,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["IIyZhcg"].src, lensFlareSystem3);
-         var flare04 = new BABYLON.LensFlare(0.2, 0.6, new BABYLON.Color3(.5,.5,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["HRsf4I5"].src, lensFlareSystem3);
-         var flare05 = new BABYLON.LensFlare(0.1, 0.5, new BABYLON.Color3(.4,.6,.9),  AssetsManager.ins.resourceObject["images"]["gameScene"]["XaJRD9j"].src, lensFlareSystem3);
-         var flare06 = new BABYLON.LensFlare(0.1, 0.35, new BABYLON.Color3(.5,.5,.9), AssetsManager.ins.resourceObject["images"]["gameScene"]["it5c3Vr"].src, lensFlareSystem3);
-         var flare07 = new BABYLON.LensFlare(0.12, -0.5, new BABYLON.Color3(.9,.75,.5), AssetsManager.ins.resourceObject["images"]["gameScene"]["XaJRD9j"].src, lensFlareSystem3);
-         var flare08 = new BABYLON.LensFlare(0.25, -0.25, new BABYLON.Color3(1,.85,.5), AssetsManager.ins.resourceObject["images"]["gameScene"]["IIyZhcg"].src, lensFlareSystem3);
-     */     var flare09 = new BABYLON.LensFlare(2.6, 0, new BABYLON.Color3(1,1,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["lensdirt"].src, lensFlareSystem3);
-         var flare10 = new BABYLON.LensFlare(1.6, 1.3, new BABYLON.Color3(0.5,0.5,0.5), AssetsManager.ins.resourceObject["images"]["gameScene"]["lens2"].src, lensFlareSystem3);
-
-/* 
-         var lens4 = BABYLON.Mesh.CreateSphere("centerHidenPick", 16, 0.1, this.scene);
-         lens4.parent=cameraBox;
-         lens4.position=new BABYLON.Vector3(0.05,0.02,-0.5)
-         lens4.visibility=0
-        // lens4.position=new BABYLON.Vector3(-300000, 10000, 0)
-         var lensFlareSystem4 = new BABYLON.LensFlareSystem("lensFlareSystem", lens4, this.scene);
-         var _lens4 = new BABYLON.LensFlare(0.4, 1.3, new BABYLON.Color3(0.5,0.5,0.5), AssetsManager.ins.resourceObject["images"]["gameScene"]["lens"].src, lensFlareSystem4);
-        
-         var lens5 = BABYLON.Mesh.CreateSphere("centerHidenPick", 16, 0.1, this.scene);
-         lens5.visibility=0
-         lens5.position=new BABYLON.Vector3(-0.03,0.02,-0.5)
-         lens5.parent=cameraBox;
-         var lensFlareSystem5 = new BABYLON.LensFlareSystem("lensFlareSystem", lens5, this.scene);
-         var _lens5 = new BABYLON.LensFlare(0.4, 1.3, new BABYLON.Color3(0.5,0.5,0.5), AssetsManager.ins.resourceObject["images"]["gameScene"]["lens"].src, lensFlareSystem5);
- */
-
+        // var flare00 = new BABYLON.LensFlare(0.3, 1.3, new BABYLON.Color3(1,1,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["ty"].src, lensFlareSystem3);
+         var flare09 = new BABYLON.LensFlare(2.6, 0, new BABYLON.Color3(1,1,1), AssetsManager.ins.resourceObject["images"]["gameScene"]["lensdirt"].src, lensFlareSystem3);
+         var flare10 = new BABYLON.LensFlare(1.6, 1, new BABYLON.Color3(0.5,0.5,0.5), AssetsManager.ins.resourceObject["images"]["gameScene"]["lens2"].src, lensFlareSystem3);
          var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
          advancedTexture.layer.layerMask=1;
 
