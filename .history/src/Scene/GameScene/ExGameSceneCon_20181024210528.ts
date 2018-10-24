@@ -221,7 +221,7 @@ mirror.position = new BABYLON.Vector3(0, -800, 0); */
         HotDecoyFlareCon.ins.update(this.times)
         MissileCon.ins.update(this.times)
         if(this.display.lens3.isOccluded){
-           // console.log("被遮挡")
+            console.log("被遮挡")
           //  this.display.lensFlareSystem3.isEnabled=false;
             
         }else{

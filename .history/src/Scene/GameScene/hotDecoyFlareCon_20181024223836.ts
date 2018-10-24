@@ -114,7 +114,7 @@ export class HotDecoyFlareCon{
 
         //创建子弹列表
         for(var i=0;i<=10;i++){
-            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  2, diameterY: 2, diameterZ: 2}, this.scene);
+            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  3, diameterY: 3, diameterZ: 3}, this.scene);
             this.bullets[i].lifeState=false;
             this.bullets[i].isPickable=false;
             this.bullets[i].material=this.display.freeMateial;
@@ -130,7 +130,14 @@ export class HotDecoyFlareCon{
         }
 
         //创建爆炸列表
-     
+        for(var i=0;i<=10;i++){
+            this.booms[i]= BABYLON.MeshBuilder.CreateSphere("boom", {diameter: 10}, this.scene);
+            this.booms[i].boom=new TWEEN.Tween(this.booms[i].scaling);
+            this.booms[i].lifeState=false;
+            this.booms[i].isPickable=false;
+            this.booms[i].material=this.display.boomMateial;
+            this.bullets[i].checkCollisions = false;;
+        }
 
         //获得位置
         var origin = this.display.cameraBox.position;
@@ -179,7 +186,7 @@ export class HotDecoyFlareCon{
                             
                              if(this.j<=this.bullets.length-1){
                                  this.tailFlowers[this.j].start()
-                                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram-2,this.display.cameraBox.absolutePosition.z) ;
+                                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram,this.display.cameraBox.absolutePosition.z) ;
                                  this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
                                  this.bullets[this.j].lifeState=true;
                                  this.j++;
@@ -187,7 +194,7 @@ export class HotDecoyFlareCon{
                              }else{
                                  this.j=0;
                                  this.tailFlowers[this.j].start()
-                                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y-2,this.display.cameraBox.absolutePosition.z) ;
+                                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
                                  this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
                                  this.bullets[this.j].lifeState=true;
                              }

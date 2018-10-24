@@ -91,8 +91,8 @@ export class FlyCon{
     this.rect2.color = "#009855";
     this.rect2.thickness = 0;
 
-  //  console.log(this.rect2)
-  //  console.log("this.rect2")
+    console.log(this.rect2)
+    console.log("this.rect2")
 
 
 
@@ -114,8 +114,8 @@ export class FlyCon{
 
     this.image = new BABYLON.GUI.Image("but", AssetsManager.ins.resourceObject["images"]["gameScene"]["jiantou"].src);
     this.image.width = "30px";
-  //  console.log( "this.image")
-  //  console.log( this.image)
+    console.log( "this.image")
+    console.log( this.image)
     this.image.height = "15px";
     this.image.scaleX = -1;
     this.image.top="192px";
@@ -130,7 +130,7 @@ export class FlyCon{
     var countB=360;
     var chizi= new BABYLON.GUI.Image("but", AssetsManager.ins.resourceObject["images"]["gameScene"]["jiantou2"].src);
     for(var i=0;i<=36;i++){
-      //  console.log(i)
+        console.log(i)
         countB-=30
         if(countB<=0){
             countB=360;
@@ -198,8 +198,8 @@ export class FlyCon{
 
     this.ico_bg = new BABYLON.GUI.Image("ico_bg", AssetsManager.ins.resourceObject["images"]["gameScene"]["ico_bg"].src);
     this.ico_bg.width = "200px";
- //   console.log( "this.ico_bg")
-  //  console.log( this.ico_bg)
+    console.log( "this.ico_bg")
+    console.log( this.ico_bg)
     this.ico_bg.height = "200px";
   //  this.ico_bg.scaleX = -1;
    // this.ico_bg.top="-192px";
@@ -210,8 +210,8 @@ export class FlyCon{
 
     this.ico_b = new BABYLON.GUI.Image("ico_b", AssetsManager.ins.resourceObject["images"]["gameScene"]["ico_b"].src);
     this.ico_b.width = "90px";
-   // console.log( "this.ico_b")
-  //  console.log( this.ico_b)
+    console.log( "this.ico_b")
+    console.log( this.ico_b)
     this.ico_b.height = "90px";
    // this.ico_b.scaleX = -1;
   //  this.ico_b.top="-192px";
@@ -507,8 +507,8 @@ export class FlyCon{
           var ss=this.warnings.some((val) => {
              return val===1; 
           });
-       //   console.log("ss")
-       //   console.log(ss)
+          console.log("ss")
+          console.log(ss)
           if(ss){
           
             if(this.jl>50){
@@ -523,7 +523,7 @@ export class FlyCon{
             this.musics.win.setVolume(0)
             this.musics.win2.setVolume(0)
           }
-          //console.log(this.warnings)
+          console.log(this.warnings)
          //this.starUi.moveToVector3(this.hit.pickedPoint,this.scene)
       
          this.sayWarning()
@@ -756,7 +756,7 @@ export class FlyCon{
         _sd["down-go"+mesh.name].weight = 0
         _sd["down-back"+mesh.name].weight = 0
         _sd["back"+mesh.name].weight = 1
-      //  console.log("中")
+        console.log("中")
            // this.scene.beginAnimation(mesh, 2.4583332538604736, 3.2916667461395264*val, false);
        }
     }
@@ -951,7 +951,7 @@ export class FlyCon{
             return;
         }
 
-       // console.log("airflowCon")
+        console.log("airflowCon")
         clearInterval(this.airflowConTime);
         
         if(airflowConState){

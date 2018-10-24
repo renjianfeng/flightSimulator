@@ -22,7 +22,6 @@ export class ResourceCon {
             binarys:[
                 {name:"zhanji", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"zhanji4.mp3"},
                 {name:"qiang", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"qiang7.mp3"},
-                {name:"daodan", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"daodan.mp3"},
                 {name:"dan", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"qiang2.mp3"},
                 {name:"win", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"win.mp3"},
                 {name:"win2", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"jb.mp3"},

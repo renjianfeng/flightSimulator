@@ -22,7 +22,6 @@ export class ResourceCon {
             binarys:[
                 {name:"zhanji", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"zhanji4.mp3"},
                 {name:"qiang", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"qiang7.mp3"},
-                {name:"daodan", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"daodan.mp3"},
                 {name:"dan", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"qiang2.mp3"},
                 {name:"win", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"win.mp3"},
                 {name:"win2", filePath:this.pathFirst+"src/Resource/gameScene/binarys/", fileName:"jb.mp3"},
@@ -53,7 +52,7 @@ export class ResourceCon {
                 {name:"map1", filePath:this.pathFirst+"src/Resource/gameScene/models/height_m2/", fileName:"height_m18.babylon"},
                 {name:"map2", filePath:this.pathFirst+"src/Resource/gameScene/models/height_m2/", fileName:"height_m15.babylon"},*/
                 {name:"map3", filePath:this.pathFirst+"src/Resource/gameScene/models/height_m2/", fileName:"height_m22.babylon"}, 
-                {name:"sm14", filePath:this.pathFirst+"src/Resource/gameScene/models/sm14/", fileName:"sm106.glb"},
+                {name:"sm14", filePath:this.pathFirst+"src/Resource/gameScene/models/sm14/", fileName:"sm103.glb"},
             ],
             textures:[
                 {name:"grass", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"grass.png"},
