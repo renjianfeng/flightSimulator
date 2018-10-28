@@ -349,7 +349,6 @@ export class FlyCon{
              if(this.viewState==true){
                  this.display.camera5.target=this.display.cameraBox.position;
                  this.display.camera5.attachControl(SceneManager.ins.canvas);
-                 this.display.camera5.radius=20;
                  this.scene.activeCamera=this.display.camera5;
              }else{
               //  this.scene.activeCamera=this.display.camera3;
@@ -369,15 +368,13 @@ export class FlyCon{
 
            this.rect2.rotation=-this.display.cameraBox.rotation.z;
 
-       //    console.log(Math.PI*2)
-       //    console.log(this.display.cameraBox.rotation.z)
+           console.log(Math.PI*2)
+           console.log(this.display.cameraBox.rotation.z)
 
            if(this.display.cameraBox.rotation.z>Math.PI/2){
                this.display.cameraBox.rotation.y+=(this.display.cameraBox.rotation.z-Math.PI)/50*this.times;
-               //this.display.cameraBox.rotation.y+=0.01*this.times;
            }else if( this.display.cameraBox.rotation.z<-Math.PI/2){
                this.display.cameraBox.rotation.y+=(this.display.cameraBox.rotation.z+Math.PI)/50*this.times;
-                //this.display.cameraBox.rotation.y+=0.01*this.times;
            }else{
                this.display.cameraBox.rotation.y-=this.display.cameraBox.rotation.z/50*this.times;
            }
@@ -652,12 +649,12 @@ export class FlyCon{
                         var _moveX =this.moveX + event.movementX;
                         var _moveY =this.moveY + event.movementY;
 
-                        if(_moveX>=2000||_moveX<=-2000){
+                  /*       if(_moveX>=1500||_moveX<=-1500){
                             this.moveX=this.moveX
                             _moveX=this.moveX
                         }else{
                             this.moveX = _moveX;
-                        }
+                        } */
 
                         this.moveX = _moveX;
 

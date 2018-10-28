@@ -94,8 +94,8 @@ export class HotDecoyFlareCon{
           this.particleeExhaust.color2 = new BABYLON.Color4(255/255, 250/255,205/255, 1.0);
           this.particleeExhaust.colorDead = new BABYLON.Color4(0, 0, 0, 0.5);
         //  particleeExhaust["addColorGradient"](0, new BABYLON.Color4(1, 1, 1, 0));
-          this.particleeExhaust.minSize = 1;
-          this.particleeExhaust.maxSize = 3;
+          this.particleeExhaust.minSize = 2;
+          this.particleeExhaust.maxSize = 5;
           // console.log(particleSystem)
           this.particleeExhaust.minLifeTime = 10;
           this.particleeExhaust.maxLifeTime = 10;

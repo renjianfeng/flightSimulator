@@ -349,7 +349,6 @@ export class FlyCon{
              if(this.viewState==true){
                  this.display.camera5.target=this.display.cameraBox.position;
                  this.display.camera5.attachControl(SceneManager.ins.canvas);
-                 this.display.camera5.radius=20;
                  this.scene.activeCamera=this.display.camera5;
              }else{
               //  this.scene.activeCamera=this.display.camera3;
@@ -369,8 +368,8 @@ export class FlyCon{
 
            this.rect2.rotation=-this.display.cameraBox.rotation.z;
 
-       //    console.log(Math.PI*2)
-       //    console.log(this.display.cameraBox.rotation.z)
+           console.log(Math.PI*2)
+           console.log(this.display.cameraBox.rotation.z)
 
            if(this.display.cameraBox.rotation.z>Math.PI/2){
                this.display.cameraBox.rotation.y+=(this.display.cameraBox.rotation.z-Math.PI)/50*this.times;

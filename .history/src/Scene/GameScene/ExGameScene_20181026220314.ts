@@ -137,7 +137,7 @@ export class ExGameScene{
         var camera5 = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0), this.scene);
      //   camera5.rotation.y=-Math.PI*1
     //    camera5.position.x=+0.05
-        camera5.upperRadiusLimit=3000;
+        camera5.upperRadiusLimit=30;
         camera5.lowerRadiusLimit=10;
         camera5.fov=1
         camera5.detachControl(SceneManager.ins.canvas);

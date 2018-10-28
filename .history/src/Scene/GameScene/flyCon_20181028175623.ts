@@ -349,7 +349,7 @@ export class FlyCon{
              if(this.viewState==true){
                  this.display.camera5.target=this.display.cameraBox.position;
                  this.display.camera5.attachControl(SceneManager.ins.canvas);
-                 this.display.camera5.radius=20;
+                 this.display.camera5.radius=10;
                  this.scene.activeCamera=this.display.camera5;
              }else{
               //  this.scene.activeCamera=this.display.camera3;

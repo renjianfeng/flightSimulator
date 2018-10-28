@@ -142,7 +142,7 @@ export class ExGameScene{
         camera5.fov=1
         camera5.detachControl(SceneManager.ins.canvas);
         camera5.minZ=-5;
-        camera5.maxZ=2000000;
+        camera5.maxZ=200;
       
 
         var jingzi =  BABYLON.MeshBuilder.CreatePlane("myPlane", {width: 5, height: 5}, this.scene);
