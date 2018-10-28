@@ -53,7 +53,7 @@ export class ResourceCon {
                 {name:"map1", filePath:this.pathFirst+"src/Resource/gameScene/models/height_m2/", fileName:"height_m18.babylon"},
                 {name:"map2", filePath:this.pathFirst+"src/Resource/gameScene/models/height_m2/", fileName:"height_m15.babylon"},*/
                 {name:"map3", filePath:this.pathFirst+"src/Resource/gameScene/models/height_m2/", fileName:"height_m22.babylon"}, 
-                {name:"sm14", filePath:this.pathFirst+"src/Resource/gameScene/models/sm14/", fileName:"sm106.glb"},
+                {name:"sm14", filePath:this.pathFirst+"src/Resource/gameScene/models/sm14/", fileName:"sm108.glb"},
             ],
             textures:[
                 {name:"grass", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"grass.png"},

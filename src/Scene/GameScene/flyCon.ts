@@ -638,6 +638,30 @@ export class FlyCon{
              }
         })
 
+
+     
+        var _qljstate=false;
+
+        document.addEventListener("keydown",(e)=>{
+           
+
+            　if (e.keyCode == 82) {
+                _qljstate=!_qljstate;
+                if(_qljstate){
+                 
+                   this.scene.beginAnimation(this.scene.getMeshByName("前轮"), 0, 0.7916666865348816, false);
+                   this.scene.beginAnimation(this.scene.getMeshByName("后轮"), 0, 0.7916666865348816, false);
+                   this.scene.beginAnimation(this.scene.getMeshByName("后轮.001"), 0, 0.7916666865348816, false);
+                   
+                }else{
+                   this.scene.beginAnimation(this.scene.getMeshByName("前轮"),  0.7916666865348816,1.625, false);
+                   this.scene.beginAnimation(this.scene.getMeshByName("后轮"),  0.7916666865348816,1.625, false);
+                   this.scene.beginAnimation(this.scene.getMeshByName("后轮.001"),  0.7916666865348816,1.625, false);
+                }
+              }
+    　　     // }
+        })
+
       
       
         this.eleImage = document.getElementById('renderCanvas');
