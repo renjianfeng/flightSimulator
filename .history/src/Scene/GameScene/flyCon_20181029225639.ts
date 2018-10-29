@@ -323,6 +323,10 @@ export class FlyCon{
     public flyLife=true;
 
 
+    public get FlyLife(){
+        return this.flyLife;
+    }
+
     //更新方法
     public update(times){
 

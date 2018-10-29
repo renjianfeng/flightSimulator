@@ -320,11 +320,15 @@ export class FlyCon{
         this.keyevent()
     }
 
-    public flyLife=true;
-
+    private flyLife=true;
 
     //更新方法
     public update(times){
+
+
+        if(!this.flyLife){
+            return false;
+        }
 
 
         this.rect2.linkWithMesh(this.display.pickMesh)

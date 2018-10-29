@@ -216,7 +216,7 @@ mirror.position = new BABYLON.Vector3(0, -800, 0); */
     private times
     protected beforeRender(){
 
-        if(!FlyCon.ins.flyLife){
+        if(!FlyCon.ins.FlyLife{
             return false;
         }
 

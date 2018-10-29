@@ -1,3 +1,4 @@
+import { FlyCon } from './../../../.history/src/Scene/GameScene/flyCon_20181014155625';
 
 import {AssetsManager, SceneManager} from "../../public/index";
 import {DisplayPool} from "../../public/index";

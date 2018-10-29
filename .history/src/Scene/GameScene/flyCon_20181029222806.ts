@@ -6,8 +6,7 @@
 import {AssetsManager} from "../../public"
 import {SceneManager} from "../../public"
 import {Func} from "../../public"
-import {BoomCon} from "./boomCon"
-import { Vector3 } from "babylonjs";
+import {BoomCon} from "../boomCon"
 
 export class FlyCon{
 
@@ -261,8 +260,6 @@ export class FlyCon{
         //创建音频
         this.creatMusic()
 
-        BoomCon.ins.init(this.display)
-
        // this.sayWarning()
 
        /*  setTimeout(()=>{
@@ -320,11 +317,8 @@ export class FlyCon{
         this.keyevent()
     }
 
-    public flyLife=true;
-
-
     //更新方法
-    public update(times){
+    public update(times):void{
 
 
         this.rect2.linkWithMesh(this.display.pickMesh)
@@ -542,14 +536,6 @@ export class FlyCon{
             }else{
                 this.musics.win.setVolume(2)
                 this.musics.win2.setVolume(0)
-            }
-
-            if(this.jl<=10){
-                this.flyLife=false;
-                BoomCon.ins.boom(this.display.cameraBox.position);
-                this.musics.win.setVolume(0)
-                this.musics.win2.setVolume(0)
-                this.scene.getMeshByName("__root__").scaling=new BABYLON.Vector3(0,0,0)
             }
            
           }else{

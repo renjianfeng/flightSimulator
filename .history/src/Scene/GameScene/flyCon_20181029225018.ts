@@ -320,11 +320,15 @@ export class FlyCon{
         this.keyevent()
     }
 
-    public flyLife=true;
-
+    private flyLife=true;
 
     //更新方法
     public update(times){
+
+
+        if(!this.flyLife){
+            return false;
+        }
 
 
         this.rect2.linkWithMesh(this.display.pickMesh)
@@ -549,6 +553,7 @@ export class FlyCon{
                 BoomCon.ins.boom(this.display.cameraBox.position);
                 this.musics.win.setVolume(0)
                 this.musics.win2.setVolume(0)
+
                 this.scene.getMeshByName("__root__").scaling=new BABYLON.Vector3(0,0,0)
             }
            

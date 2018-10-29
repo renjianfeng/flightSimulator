@@ -322,7 +322,6 @@ export class FlyCon{
 
     public flyLife=true;
 
-
     //更新方法
     public update(times){
 

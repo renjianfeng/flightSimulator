@@ -1,3 +1,4 @@
+import { FlyCon } from './../../../.history/src/Scene/GameScene/flyCon_20181014155625';
 
 import {AssetsManager, SceneManager} from "../../public/index";
 import {DisplayPool} from "../../public/index";
@@ -216,7 +217,7 @@ mirror.position = new BABYLON.Vector3(0, -800, 0); */
     private times
     protected beforeRender(){
 
-        if(!FlyCon.ins.flyLife){
+        if(!FlyCon.ins.FlyLife{
             return false;
         }
 
