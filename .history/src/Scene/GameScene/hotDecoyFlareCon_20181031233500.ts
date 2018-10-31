@@ -2,17 +2,17 @@
  * 子弹控制系统   by renjianfeng 
  */
 
-import {AssetsManager} from "../../public"
+import {AssetsManager,particleCon} from "../../public"
 import {SceneManager} from "../../public"
-import {Func,particleCon} from "../../public"
+import {Func} from "../../public"
 
-export class MissileCon{
+export class HotDecoyFlareCon{
 
-    private static instance: MissileCon;
+    private static instance: HotDecoyFlareCon;
 
-    public static get ins(): MissileCon {
+    public static get ins(): HotDecoyFlareCon {
         if (!this.instance) {
-            this.instance = new MissileCon();
+            this.instance = new HotDecoyFlareCon();
         }
         return this.instance;
     }
@@ -37,7 +37,7 @@ export class MissileCon{
     //帧率时间补偿
 
     private times;
-    private fireSpeed=6;
+    private fireSpeed=3;
 
     private j;
     private freeState;
@@ -52,7 +52,7 @@ export class MissileCon{
 
     private creatMusic(){
         this.musics={
-            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["daodan"]["url"]] , this.scene,()=>{
+            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["dan"]["url"]] , this.scene,()=>{
                
             },{loop:false}),
         }
@@ -81,54 +81,43 @@ export class MissileCon{
         this.addEvent()
         this.creatMusic()
 
-        this.scene.getMeshByName("导弹").isVisible=false;
+     //   this.scene.getMeshByName("导弹").isVisible=false;
 
 
           //尾气粒子
-          this.particleeExhaust = new BABYLON.ParticleSystem("particles", 2000, this.scene);
+          this.particleeExhaust = new BABYLON.ParticleSystem("particles", 100, this.scene);
           //粒子的纹理
           this.particleeExhaust.particleTexture =  AssetsManager.ins.resourceObject["textures"]["gameScene"]["yun"];
           this.particleeExhaust.minEmitBox = new BABYLON.Vector3(0, 0, 0); // Starting all From
           this.particleeExhaust.maxEmitBox = new BABYLON.Vector3(-0, -0, -0); // Starting all From
-          this.particleeExhaust.color1 = new BABYLON.Color4(100/255, 100/255,100/255, 0.5);
-          this.particleeExhaust.color2 = new BABYLON.Color4(100/255, 100/255,100/255,0.5);
-          this.particleeExhaust.colorDead = new BABYLON.Color4(0, 0, 0, 0);
+          this.particleeExhaust.color1 = new BABYLON.Color4(255/255, 250/255,250/255, 1.0);
+          this.particleeExhaust.color2 = new BABYLON.Color4(255/255, 250/255,205/255, 1.0);
+          this.particleeExhaust.colorDead = new BABYLON.Color4(0, 0, 0, 0.5);
         //  particleeExhaust["addColorGradient"](0, new BABYLON.Color4(1, 1, 1, 0));
           this.particleeExhaust.minSize = 1;
           this.particleeExhaust.maxSize = 3;
           // console.log(particleSystem)
-          this.particleeExhaust.minLifeTime = 50;
-          this.particleeExhaust.maxLifeTime = 50;
-          this.particleeExhaust.emitRate = 10;
-          this.particleeExhaust.blendMode =  BABYLON.ParticleSystem["BLENDMODE_MULTIPLYADD"];
-          this.particleeExhaust.direction1 = new BABYLON.Vector3(-0.4, 3, -10.5);
-          this.particleeExhaust.direction2 = new BABYLON.Vector3(0.4, 3, -10.5);
+          this.particleeExhaust.minLifeTime = 10;
+          this.particleeExhaust.maxLifeTime = 10;
+          this.particleeExhaust.blendMode = BABYLON.ParticleSystem["BLENDMODE_MULTIPLYADD"];
+          this.particleeExhaust.direction1 = new BABYLON.Vector3(-0.4, 0.3, -1);
+          this.particleeExhaust.direction2 = new BABYLON.Vector3(0.4, 0.3, -1);
           // particleSystem2.direction2 = new BABYLON.Vector3(0, 100, 0);
           // Speed
           this.particleeExhaust.minEmitPower = 0.5;
           this.particleeExhaust.maxEmitPower = 0.5;
-          this.particleeExhaust.updateSpeed = 0.5;
+          this.particleeExhaust.updateSpeed = 3;
 
 
          
 
         //创建子弹列表
         for(var i=0;i<=10;i++){
-            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  1, diameterY: 1, diameterZ: 30}, this.scene);
+            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  2, diameterY: 2, diameterZ: 2}, this.scene);
             this.bullets[i].lifeState=false;
             this.bullets[i].isPickable=false;
             this.bullets[i].material=this.display.freeMateial;
             this.bullets[i].checkCollisions = false;
-            var missile=this.scene.getMeshByName("导弹").clone();
-            missile.parent=this.bullets[i];
-            missile.position=new BABYLON.Vector3(0,0,16)
-          //  missile.scaling=new BABYLON.Vector3(10,10,10)
-            missile.rotation=new BABYLON.Vector3(0,-Math.PI*1,0);
-            missile.isPickable=false;
-            missile.isVisible=true;
-            missile.checkCollisions=false;
-           
-            missile.scaling=new BABYLON.Vector3(2,2,2)
 
             this.particleeExhausts[i]=this.particleeExhaust["clone"]("s",1)
 
@@ -140,14 +129,7 @@ export class MissileCon{
         }
 
         //创建爆炸列表
-        for(var i=0;i<=10;i++){
-            this.booms[i]= BABYLON.MeshBuilder.CreateSphere("boom", {diameter: 10}, this.scene);
-            this.booms[i].boom=new TWEEN.Tween(this.booms[i].scaling);
-            this.booms[i].lifeState=false;
-            this.booms[i].isPickable=false;
-            this.booms[i].material=this.display.boomMateial;
-            this.bullets[i].checkCollisions = false;;
-        }
+     
 
         //获得位置
         var origin = this.display.cameraBox.position;
@@ -181,32 +163,43 @@ export class MissileCon{
             }
         })
 
-        document.addEventListener("keydown",(e)=>{
-            　if (e.keyCode == 81) {
-               // if(this.freeState){
-                    this.musics.qiang.play()
-                   // this.musics.qiang.setVolume(1)
-                    var ram=0;
+        var cleard;
 
-                   
-                    if(this.j<=this.bullets.length-1){
-                        this.tailFlowers[this.j].start()
-                        this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram,this.display.cameraBox.absolutePosition.z) ;
-                        this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
-                        this.bullets[this.j].lifeState=true;
-                        this.j++;
-                      //  this.timerNpc.start();
-                    }else{
-                        this.j=0;
-                        this.tailFlowers[this.j].start()
-                        this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y,this.display.cameraBox.absolutePosition.z) ;
-                        this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
-                        this.bullets[this.j].lifeState=true;
-                    }
-                }else{
-                   // this.musics.qiang.setVolume(0)
-                }
-    　　     // }
+        document.addEventListener("keydown",(e)=>{
+                document.addEventListener("keydown",(e)=>{
+                    　if (e.keyCode == 69) {
+                        clearInterval(cleard)
+                        var i=0
+                        cleard=setInterval(()=>{
+                            this.musics.qiang.play()
+                            // this.musics.qiang.setVolume(1)
+                             var ram=Math.random()/100;
+         
+                            
+                             if(this.j<=this.bullets.length-1){
+                                 this.tailFlowers[this.j].start()
+                                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram-2,this.display.cameraBox.absolutePosition.z) ;
+                                 this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
+                                 this.bullets[this.j].lifeState=true;
+                                 this.j++;
+                               //  this.timerNpc.start();
+                             }else{
+                                 this.j=0;
+                                 this.tailFlowers[this.j].start()
+                                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y-2,this.display.cameraBox.absolutePosition.z) ;
+                                 this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
+                                 this.bullets[this.j].lifeState=true;
+                             }
+
+                             i++
+                             if(i>=5){
+                                clearInterval(cleard)
+                             }
+                        },300)
+            　　      }
+                })
+            
+             
         })
     }
 
@@ -274,7 +267,7 @@ export class MissileCon{
      
                       if(jl2<=50){
                          free.lifeState=false;
-                         this.boom(i,free)
+                       //  this.boom(i,free)
                          this.tailFlowers[i].stop()
                          free.boomPosition=null;
                       }
@@ -292,7 +285,7 @@ export class MissileCon{
                 if(jl>=3000){
                      free.lifeState=false;
                      free.boomPosition=null;
-                     this.boom(i,free)
+                   //  this.boom(i,free)
                      this.tailFlowers[i].stop()
                 }
              }else{

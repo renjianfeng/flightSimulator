@@ -21,7 +21,7 @@ gulp.task('packToOne', function(){
         [
             './libs/pep.min.js',
             './libs/zepto.min.js',
-            './libs/new2/babylon.js',
+            './libs/v33/babylon.js',
             './libs/new2/babylon.gui.min.js',
             './libs/pep.min.js',
             './libs/tween.min.js',

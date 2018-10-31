@@ -52,7 +52,7 @@ export class BoomCon{
 
     private creatMusic(){
         this.musics={
-            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["boom"]["url"]] , this.scene,()=>{
+            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["daodan"]["url"]] , this.scene,()=>{
                
             },{loop:false}),
         }
@@ -74,15 +74,19 @@ export class BoomCon{
         this.creatMusic()
 
           //尾气粒子
-       
+        //  this.particleeExhaust = new BABYLON.ParticleSystem("particles", 2000, this.scene);
+           // Create default particle systems
            this.particleeExhaust = BABYLON["ParticleHelper"].CreateDefault(new BABYLON.Vector3(0,0,0), 100);
+
+           // Emitter
+         //  var fireBlastHemisphere =  this.particleeExhaust.createHemisphericEmitter(.2, 0);
     
            // Set emission rate
-           this.particleeExhaust.emitRate = 500;
+           this.particleeExhaust.emitRate = 5000;
    
            // Start size
            this.particleeExhaust.minSize = 6;
-           this.particleeExhaust.maxSize = 24;
+           this.particleeExhaust.maxSize = 12;
    
            // Lifetime
            this.particleeExhaust.minLifeTime = 1;
@@ -90,7 +94,7 @@ export class BoomCon{
    
            // Emission power
            this.particleeExhaust.minEmitPower = 30;
-           this.particleeExhaust.maxEmitPower = 110;
+           this.particleeExhaust.maxEmitPower = 60;
    
            // Limit velocity over time
            this.particleeExhaust.addLimitVelocityGradient(0, 40);
@@ -107,7 +111,7 @@ export class BoomCon{
            this.particleeExhaust.maxInitialRotation = Math.PI / 2;
    
            // Texture
-           this.particleeExhaust.particleTexture = AssetsManager.ins.resourceObject["textures"]["gameScene"]["yun"];
+           this.particleeExhaust.particleTexture = new BABYLON.Texture("https://raw.githubusercontent.com/PatrickRyanMS/BabylonJStextures/master/ParticleSystems/Explosion/ExplosionSim_Sample.png", this.scene);
            this.particleeExhaust.blendMode = BABYLON.ParticleSystem["BLENDMODE_MULTIPLYADD"]; 
    
            // Color over life
@@ -136,14 +140,14 @@ export class BoomCon{
            this.particleeExhaust.addColorRemapGradient(1.0, 0.95, 1.0);
    
            // Particle system start
-           this.particleeExhaust.start(10);
+           this.particleeExhaust.start(30);
            this.particleeExhaust.targetStopDuration = .4;
    
            // Animation update speed
            this.particleeExhaust.updateSpeed = 1/60;
    
            // Rendering order
-           this.particleeExhaust.renderingGroupId = 1;
+          // this.particleeExhaust.renderingGroupId = 1;
 
 
          
@@ -153,7 +157,8 @@ export class BoomCon{
 
             this.tailFlowers[i]=new particleCon(new BABYLON.Vector3(0,0,0),SceneManager.ins.scene,this.particleeExhausts[i]);        
             //粒子尾气的位置
-            this.tailFlowers[i].Position(new BABYLON.Vector3(0, 0, 0))
+            this.tailFlowers[i].Position(new BABYLON.Vector3(0, 0, -0.6))
+   
            // this.tailFlowers[i].Parent(this.booms[i]);
         }
 

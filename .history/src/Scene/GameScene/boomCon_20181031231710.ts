@@ -52,7 +52,7 @@ export class BoomCon{
 
     private creatMusic(){
         this.musics={
-            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["boom"]["url"]] , this.scene,()=>{
+            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["daodan"]["url"]] , this.scene,()=>{
                
             },{loop:false}),
         }
@@ -82,7 +82,7 @@ export class BoomCon{
    
            // Start size
            this.particleeExhaust.minSize = 6;
-           this.particleeExhaust.maxSize = 24;
+           this.particleeExhaust.maxSize = 12;
    
            // Lifetime
            this.particleeExhaust.minLifeTime = 1;
@@ -90,7 +90,7 @@ export class BoomCon{
    
            // Emission power
            this.particleeExhaust.minEmitPower = 30;
-           this.particleeExhaust.maxEmitPower = 110;
+           this.particleeExhaust.maxEmitPower = 60;
    
            // Limit velocity over time
            this.particleeExhaust.addLimitVelocityGradient(0, 40);
@@ -143,7 +143,7 @@ export class BoomCon{
            this.particleeExhaust.updateSpeed = 1/60;
    
            // Rendering order
-           this.particleeExhaust.renderingGroupId = 1;
+          // this.particleeExhaust.renderingGroupId = 1;
 
 
          

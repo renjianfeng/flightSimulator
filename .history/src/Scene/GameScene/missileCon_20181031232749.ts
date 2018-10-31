@@ -90,19 +90,19 @@ export class MissileCon{
           this.particleeExhaust.particleTexture =  AssetsManager.ins.resourceObject["textures"]["gameScene"]["yun"];
           this.particleeExhaust.minEmitBox = new BABYLON.Vector3(0, 0, 0); // Starting all From
           this.particleeExhaust.maxEmitBox = new BABYLON.Vector3(-0, -0, -0); // Starting all From
-          this.particleeExhaust.color1 = new BABYLON.Color4(100/255, 100/255,100/255, 0.5);
-          this.particleeExhaust.color2 = new BABYLON.Color4(100/255, 100/255,100/255,0.5);
-          this.particleeExhaust.colorDead = new BABYLON.Color4(0, 0, 0, 0);
+          this.particleeExhaust.color1 = new BABYLON.Color4(255/255, 250/255,250/255, 1.0);
+          this.particleeExhaust.color2 = new BABYLON.Color4(255/255, 250/255,205/255, 1.0);
+          this.particleeExhaust.colorDead = new BABYLON.Color4(0, 0, 0, 0.5);
         //  particleeExhaust["addColorGradient"](0, new BABYLON.Color4(1, 1, 1, 0));
           this.particleeExhaust.minSize = 1;
-          this.particleeExhaust.maxSize = 3;
+          this.particleeExhaust.maxSize = 2;
           // console.log(particleSystem)
-          this.particleeExhaust.minLifeTime = 50;
-          this.particleeExhaust.maxLifeTime = 50;
+          this.particleeExhaust.minLifeTime = 100;
+          this.particleeExhaust.maxLifeTime = 100;
           this.particleeExhaust.emitRate = 10;
-          this.particleeExhaust.blendMode =  BABYLON.ParticleSystem["BLENDMODE_MULTIPLYADD"];
-          this.particleeExhaust.direction1 = new BABYLON.Vector3(-0.4, 3, -10.5);
-          this.particleeExhaust.direction2 = new BABYLON.Vector3(0.4, 3, -10.5);
+          this.particleeExhaust.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+          this.particleeExhaust.direction1 = new BABYLON.Vector3(-0.4, 0.3, -1.5);
+          this.particleeExhaust.direction2 = new BABYLON.Vector3(0.4, -0.3, -1.5);
           // particleSystem2.direction2 = new BABYLON.Vector3(0, 100, 0);
           // Speed
           this.particleeExhaust.minEmitPower = 0.5;

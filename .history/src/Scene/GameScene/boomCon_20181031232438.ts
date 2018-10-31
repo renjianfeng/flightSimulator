@@ -52,7 +52,7 @@ export class BoomCon{
 
     private creatMusic(){
         this.musics={
-            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["boom"]["url"]] , this.scene,()=>{
+            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["daodan"]["url"]] , this.scene,()=>{
                
             },{loop:false}),
         }

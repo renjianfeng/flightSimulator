@@ -52,7 +52,7 @@ export class BoomCon{
 
     private creatMusic(){
         this.musics={
-            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["boom"]["url"]] , this.scene,()=>{
+            qiang:new BABYLON.Sound("daodan",[AssetsManager.ins.resourceObject["binarys"]["gameScene"]["daodan"]["url"]] , this.scene,()=>{
                
             },{loop:false}),
         }
@@ -143,7 +143,7 @@ export class BoomCon{
            this.particleeExhaust.updateSpeed = 1/60;
    
            // Rendering order
-           this.particleeExhaust.renderingGroupId = 1;
+          // this.particleeExhaust.renderingGroupId = 1;
 
 
          

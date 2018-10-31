@@ -21,13 +21,12 @@ gulp.task('packToOne', function(){
         [
             './libs/pep.min.js',
             './libs/zepto.min.js',
-            './libs/new/babylon.js',
-            './libs/new/babylon.gui.js',
-            './libs/cannon.js',
-            './libs/tween.min.js',
-            './libs/loaders/babylon.glTF1FileLoader.js',
-            './libs/babylonjs.materials.min.js',
+            './libs/v33/babylon.js',
+            './libs/new2/babylon.gui.min.js',
             './libs/pep.min.js',
+            './libs/tween.min.js',
+            './libs/new2/babylon.glTF2FileLoader.min.js',
+            './libs/babylonjs.materials.min.js',
             './dist/hi.js'
             ])
         .pipe(concat('all.js'))

@@ -47,6 +47,7 @@ export class MissileCon{
     private particleeExhaust;
     private particleeExhausts=[];
     private tailFlowers=[];
+    private tailFlowers2=[];
 
    
 
@@ -87,22 +88,22 @@ export class MissileCon{
           //尾气粒子
           this.particleeExhaust = new BABYLON.ParticleSystem("particles", 2000, this.scene);
           //粒子的纹理
-          this.particleeExhaust.particleTexture =  AssetsManager.ins.resourceObject["textures"]["gameScene"]["yun"];
+          this.particleeExhaust.particleTexture = AssetsManager.ins.resourceObject["textures"]["gameScene"]["flare"].clone();
           this.particleeExhaust.minEmitBox = new BABYLON.Vector3(0, 0, 0); // Starting all From
           this.particleeExhaust.maxEmitBox = new BABYLON.Vector3(-0, -0, -0); // Starting all From
-          this.particleeExhaust.color1 = new BABYLON.Color4(100/255, 100/255,100/255, 0.5);
-          this.particleeExhaust.color2 = new BABYLON.Color4(100/255, 100/255,100/255,0.5);
-          this.particleeExhaust.colorDead = new BABYLON.Color4(0, 0, 0, 0);
+          this.particleeExhaust.color1 = new BABYLON.Color4(255/255, 250/255,250/255, 1.0);
+          this.particleeExhaust.color2 = new BABYLON.Color4(255/255, 250/255,205/255, 1.0);
+          this.particleeExhaust.colorDead = new BABYLON.Color4(0, 0, 0, 0.5);
         //  particleeExhaust["addColorGradient"](0, new BABYLON.Color4(1, 1, 1, 0));
           this.particleeExhaust.minSize = 1;
-          this.particleeExhaust.maxSize = 3;
+          this.particleeExhaust.maxSize = 2;
           // console.log(particleSystem)
-          this.particleeExhaust.minLifeTime = 50;
-          this.particleeExhaust.maxLifeTime = 50;
+          this.particleeExhaust.minLifeTime = 100;
+          this.particleeExhaust.maxLifeTime = 100;
           this.particleeExhaust.emitRate = 10;
-          this.particleeExhaust.blendMode =  BABYLON.ParticleSystem["BLENDMODE_MULTIPLYADD"];
-          this.particleeExhaust.direction1 = new BABYLON.Vector3(-0.4, 3, -10.5);
-          this.particleeExhaust.direction2 = new BABYLON.Vector3(0.4, 3, -10.5);
+          this.particleeExhaust.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+          this.particleeExhaust.direction1 = new BABYLON.Vector3(-0.4, 0.3, -1.5);
+          this.particleeExhaust.direction2 = new BABYLON.Vector3(0.4, -0.3, -1.5);
           // particleSystem2.direction2 = new BABYLON.Vector3(0, 100, 0);
           // Speed
           this.particleeExhaust.minEmitPower = 0.5;
@@ -141,12 +142,86 @@ export class MissileCon{
 
         //创建爆炸列表
         for(var i=0;i<=10;i++){
-            this.booms[i]= BABYLON.MeshBuilder.CreateSphere("boom", {diameter: 10}, this.scene);
+           /*  this.booms[i]= BABYLON.MeshBuilder.CreateSphere("boom", {diameter: 10}, this.scene);
             this.booms[i].boom=new TWEEN.Tween(this.booms[i].scaling);
             this.booms[i].lifeState=false;
             this.booms[i].isPickable=false;
             this.booms[i].material=this.display.boomMateial;
-            this.bullets[i].checkCollisions = false;;
+            this.bullets[i].checkCollisions = false;; */
+
+            this.booms[i] = BABYLON["ParticleHelper"].CreateDefault(new BABYLON.Vector3(0,0,0), 100);
+    
+            // Set emission rate
+            this.booms[i].emitRate = 5000;
+    
+            // Start size
+            this.booms[i].minSize = 6;
+            this.booms[i].maxSize = 12;
+    
+            // Lifetime
+            this.booms[i].minLifeTime = 1;
+            this.booms[i].maxLifeTime = 3;
+    
+            // Emission power
+            this.booms[i].minEmitPower = 30;
+            this.booms[i].maxEmitPower = 60;
+    
+            // Limit velocity over time
+            this.booms[i].addLimitVelocityGradient(0, 40);
+            this.booms[i].addLimitVelocityGradient(0.120, 12.983);
+            this.booms[i].addLimitVelocityGradient(0.445, 1.780);
+            this.booms[i].addLimitVelocityGradient(0.691, 0.502);
+            this.booms[i].addLimitVelocityGradient(0.930, 0.05);
+            this.booms[i].addLimitVelocityGradient(1.0, 0);
+    
+            this.booms[i].limitVelocityDamping = 0.9;
+    
+            // Start rotation
+            this.booms[i].minInitialRotation = -Math.PI / 2;
+            this.booms[i].maxInitialRotation = Math.PI / 2;
+    
+            // Texture
+            this.booms[i].particleTexture = AssetsManager.ins.resourceObject["textures"]["gameScene"]["yun"];
+            this.booms[i].blendMode = BABYLON.ParticleSystem["BLENDMODE_MULTIPLYADD"]; 
+    
+            // Color over life
+            this.booms[i].addColorGradient(0.0, new BABYLON.Color4(1, 1, 1, 0));
+            this.booms[i].addColorGradient(0.1, new BABYLON.Color4(1, 1, 1, 1));
+            this.booms[i].addColorGradient(0.9, new BABYLON.Color4(1, 1, 1, 1));
+            this.booms[i].addColorGradient(1.0, new BABYLON.Color4(1, 1, 1, 0));
+    
+            // // Defines the color ramp to apply
+            this.booms[i].addRampGradient(0.0, new BABYLON.Color3(1, 1, 1));
+            this.booms[i].addRampGradient(0.09, new BABYLON.Color3(209/255, 204/255, 15/255));
+            this.booms[i].addRampGradient(0.18, new BABYLON.Color3(221/255, 120/255, 14/255));
+            this.booms[i].addRampGradient(0.28, new BABYLON.Color3(200/255, 43/255, 18/255));
+            this.booms[i].addRampGradient(0.47, new BABYLON.Color3(115/255, 22/255, 15/255));
+            this.booms[i].addRampGradient(0.88, new BABYLON.Color3(14/255, 14/255, 14/255));
+            this.booms[i].addRampGradient(1.0, new BABYLON.Color3(14/255, 14/255, 14/255));
+            this.booms[i].useRampGradients = true;
+    
+            // Defines the color remapper over time
+            this.booms[i].addColorRemapGradient(0, 0, 0.1);
+            this.booms[i].addColorRemapGradient(0.2, 0.1, 0.8);
+            this.booms[i].addColorRemapGradient(0.3, 0.2, 0.85);
+            this.booms[i].addColorRemapGradient(0.35, 0.4, 0.85);
+            this.booms[i].addColorRemapGradient(0.4, 0.5, 0.9);
+            this.booms[i].addColorRemapGradient(0.5, 0.95, 1.0);
+            this.booms[i].addColorRemapGradient(1.0, 0.95, 1.0);
+    
+            // Particle system start
+            this.booms[i].start(30);
+            this.booms[i].targetStopDuration = .4;
+    
+            // Animation update speed
+            this.booms[i].updateSpeed = 1/60;
+
+            this.tailFlowers2[i]=new particleCon(new BABYLON.Vector3(0,0,0),SceneManager.ins.scene,this.booms[i]);        
+            //粒子尾气的位置
+            this.tailFlowers2[i].Position(new BABYLON.Vector3(0, 0, -0.6))
+   
+            this.tailFlowers2[i].Parent(this.bullets[i]);
+    
         }
 
         //获得位置
@@ -212,7 +287,7 @@ export class MissileCon{
 
 
     private boom(i,free){
-        this.booms[i].position=new BABYLON.Vector3(free.position.x,free.position.y,free.position.z);
+       /*  this.booms[i].position=new BABYLON.Vector3(free.position.x,free.position.y,free.position.z);
             this.booms[i].scaling.x=10;
             this.booms[i].scaling.y=10;
             this.booms[i].scaling.z=10;
@@ -223,7 +298,14 @@ export class MissileCon{
             this.booms[i].scaling.y=0;
             this.booms[i].scaling.z=0;
            // this.tailFlowers[i].stop()
-        })
+        }) */
+
+        this.tailFlowers[i].stop()
+        this.tailFlowers2[i].Position(free.position.x,free.position.y,free.position.z);
+        this.tailFlowers2[i].start();
+        setTimeout(()=>{
+            this.tailFlowers2[i].stop()
+        },2000)
     }
 
     //更新方法

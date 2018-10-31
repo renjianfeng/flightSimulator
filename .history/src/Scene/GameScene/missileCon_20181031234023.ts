@@ -101,8 +101,8 @@ export class MissileCon{
           this.particleeExhaust.maxLifeTime = 50;
           this.particleeExhaust.emitRate = 10;
           this.particleeExhaust.blendMode =  BABYLON.ParticleSystem["BLENDMODE_MULTIPLYADD"];
-          this.particleeExhaust.direction1 = new BABYLON.Vector3(-0.4, 3, -10.5);
-          this.particleeExhaust.direction2 = new BABYLON.Vector3(0.4, 3, -10.5);
+          this.particleeExhaust.direction1 = new BABYLON.Vector3(-0.4, 10, -10.5);
+          this.particleeExhaust.direction2 = new BABYLON.Vector3(0.4, 10, -10.5);
           // particleSystem2.direction2 = new BABYLON.Vector3(0, 100, 0);
           // Speed
           this.particleeExhaust.minEmitPower = 0.5;
