@@ -336,10 +336,10 @@ export class FlyCon{
             this.display.camera2.rotation=new BABYLON.Vector3(0.3,-Math.PI*2,0)
             if(this.moveY>=50||this.moveY<=-50){
                
-                if(this.display.cameraBox.rotation.x>=Math.PI*0.5){
-                    this.display.cameraBox.rotation.x=Math.PI*0.5-0.000000001
-                }else if(this.display.cameraBox.rotation.x<=-Math.PI*0.5){
-                    this.display.cameraBox.rotation.x=-Math.PI*0.5+0.000000001
+                if(this.display.cameraBox.rotation.x>=Math.PI){
+                    this.display.cameraBox.rotation.x=Math.PI
+                }else if(this.display.cameraBox.rotation.x<=-Math.PI){
+                    this.display.cameraBox.rotation.x=-Math.PI
                 }else{
                     this.display.cameraBox.rotation.x-=this.moveY/80000*this.times
                 }
@@ -408,7 +408,7 @@ export class FlyCon{
           
 
 
-           /* if(this.rightState==true&&this.leftState==false){
+           if(this.rightState==true&&this.leftState==false){
                this.display.cameraBox.rotation.y+=0.01*this.times;
                var forword=new BABYLON.Vector3(this.character.right.x*2*this.times*this.flySpeed,this.character.right.y*2*this.times*this.flySpeed,this.character.right.z*2*this.times*this.flySpeed)
      
@@ -418,7 +418,7 @@ export class FlyCon{
               var forword=new BABYLON.Vector3(-this.character.right.x*2*this.times*this.flySpeed,-this.character.right.y*2*this.times*this.flySpeed,-this.character.right.z*2*this.times*this.flySpeed)
      
               this.character.moveWithCollisions(forword);
-           } */
+           }
            
 
           
@@ -757,12 +757,12 @@ export class FlyCon{
                         var _moveX =this.moveX + event.movementX;
                         var _moveY =this.moveY + event.movementY;
 
-                        if(_moveX>=2000||_moveX<=-2000){
+                      /*   if(_moveX>=2000||_moveX<=-2000){
                             this.moveX=this.moveX
                             _moveX=this.moveX
                         }else{
                             this.moveX = _moveX;
-                        }
+                        } */
 
                         this.moveX = _moveX;
 

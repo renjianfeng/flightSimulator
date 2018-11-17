@@ -6,13 +6,13 @@ import {AssetsManager,particleCon} from "../../public"
 import {SceneManager} from "../../public"
 import {Func} from "../../public"
 
-export class HotDecoyFlareCon{
+export class NpcCon{
 
-    private static instance: HotDecoyFlareCon;
+    private static instance: NpcCon;
 
-    public static get ins(): HotDecoyFlareCon {
+    public static get ins(): NpcCon {
         if (!this.instance) {
-            this.instance = new HotDecoyFlareCon();
+            this.instance = new NpcCon();
         }
         return this.instance;
     }
@@ -145,41 +145,36 @@ export class HotDecoyFlareCon{
 
         var cleard;
 
+        cleard=setInterval(()=>{
+            this.musics.qiang.play()
+            // this.musics.qiang.setVolume(1)
+             var ram=Math.random()/100;
+
+            
+             if(this.j<=this.bullets.length-1){
+                 this.tailFlowers[this.j].start()
+                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram-2,this.display.cameraBox.absolutePosition.z) ;
+                 this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
+                 this.bullets[this.j].lifeState=true;
+                 this.j++;
+               //  this.timerNpc.start();
+             }else{
+                 this.j=0;
+                 this.tailFlowers[this.j].start()
+                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y-2,this.display.cameraBox.absolutePosition.z) ;
+                 this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
+                 this.bullets[this.j].lifeState=true;
+             }
+        },150)
+
         document.addEventListener("keydown",(e)=>{
                 document.addEventListener("keydown",(e)=>{
                     　if (e.keyCode == 69) {
                         clearInterval(cleard)
                         var i=0
-                        cleard=setInterval(()=>{
-                            this.musics.qiang.play()
-                            // this.musics.qiang.setVolume(1)
-                             var ram=Math.random()/100;
-         
-                            
-                             if(this.j<=this.bullets.length-1){
-                                 this.tailFlowers[this.j].start()
-                                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x+ram,this.display.cameraBox.absolutePosition.y+ram-2,this.display.cameraBox.absolutePosition.z) ;
-                                 this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x+ram,this.display.cameraBox.rotation.y+ram,this.display.cameraBox.rotation.z);
-                                 this.bullets[this.j].lifeState=true;
-                                 this.j++;
-                               //  this.timerNpc.start();
-                             }else{
-                                 this.j=0;
-                                 this.tailFlowers[this.j].start()
-                                 this.bullets[this.j].position=new BABYLON.Vector3(this.display.cameraBox.absolutePosition.x,this.display.cameraBox.absolutePosition.y-2,this.display.cameraBox.absolutePosition.z) ;
-                                 this.bullets[this.j].rotation=new BABYLON.Vector3(this.display.cameraBox.rotation.x,this.display.cameraBox.rotation.y,this.display.cameraBox.rotation.z);
-                                 this.bullets[this.j].lifeState=true;
-                             }
-
-                             i++
-                             if(i>=10){
-                                clearInterval(cleard)
-                             }
-                        },150)
+                      
             　　      }
                 })
-            
-             
         })
     }
 

@@ -33,16 +33,9 @@ export class ExGameScene{
         /**
          * 室内相机校准模型
          * */
-        var cameraBox = BABYLON.MeshBuilder.CreateBox("camera2Box", {height:  0.5, width: 0.5, depth: 0.5}, this.scene);
-        cameraBox.isVisible=false;
-        cameraBox.isPickable=false;
+        var cameraBox = BABYLON.MeshBuilder.CreateBox("camera2Box", {height:  2, width: 2, depth: 2}, this.scene);
+       // cameraBox.isVisible=false;
         cameraBox.rotation=new BABYLON.Vector3(0,0,0)
-
-
-        var npcBox = BABYLON.MeshBuilder.CreateBox("camera2Box", {height:  0.5, width: 0.5, depth: 0.5}, this.scene);
-        npcBox.isVisible=false;
-        npcBox.isPickable=false;
-        npcBox.rotation=new BABYLON.Vector3(0,0,0)
 
 
         //准星辅助模型
@@ -338,7 +331,6 @@ export class ExGameScene{
             advancedTexture:advancedTexture,
             lens3:lens3,
             jingzi:jingzi,
-            npcBox:npcBox,
         }
 
         console.log(this.display)

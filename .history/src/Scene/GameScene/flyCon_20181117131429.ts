@@ -335,14 +335,7 @@ export class FlyCon{
             this.display.cameraBox.rotation.z=-this.moveX*0.001;
             this.display.camera2.rotation=new BABYLON.Vector3(0.3,-Math.PI*2,0)
             if(this.moveY>=50||this.moveY<=-50){
-               
-                if(this.display.cameraBox.rotation.x>=Math.PI*0.5){
-                    this.display.cameraBox.rotation.x=Math.PI*0.5-0.000000001
-                }else if(this.display.cameraBox.rotation.x<=-Math.PI*0.5){
-                    this.display.cameraBox.rotation.x=-Math.PI*0.5+0.000000001
-                }else{
-                    this.display.cameraBox.rotation.x-=this.moveY/80000*this.times
-                }
+                this.display.cameraBox.rotation.x-=this.moveY/80000*this.times
 
                 this.musics.zhanji.setPlaybackRate(this.display.cameraBox.rotation.x/10+1)
             }
@@ -387,7 +380,7 @@ export class FlyCon{
        //    console.log(Math.PI*2)
        //    console.log(this.display.cameraBox.rotation.z)
 
-        /*    if(this.display.cameraBox.rotation.z>Math.PI/2){
+           if(this.display.cameraBox.rotation.z>Math.PI/2){
                this.display.cameraBox.rotation.y+=(this.display.cameraBox.rotation.z-Math.PI)/50*this.times;
                //this.display.cameraBox.rotation.y+=0.01*this.times;
            }else if( this.display.cameraBox.rotation.z<-Math.PI/2){
@@ -395,30 +388,8 @@ export class FlyCon{
                 //this.display.cameraBox.rotation.y+=0.01*this.times;
            }else{
                this.display.cameraBox.rotation.y-=this.display.cameraBox.rotation.z/50*this.times;
-           } */
-
-           if(this.moveX/80000>=0.05){
-               this.display.cameraBox.rotation.y+=0.05*this.times;
-           }else if(this.moveX/80000<=-0.05){
-               this.display.cameraBox.rotation.y+=-0.05*this.times;
-           }else{
-                this.display.cameraBox.rotation.y+=this.moveX/80000*this.times;
            }
 
-          
-
-
-           /* if(this.rightState==true&&this.leftState==false){
-               this.display.cameraBox.rotation.y+=0.01*this.times;
-               var forword=new BABYLON.Vector3(this.character.right.x*2*this.times*this.flySpeed,this.character.right.y*2*this.times*this.flySpeed,this.character.right.z*2*this.times*this.flySpeed)
-     
-               this.character.moveWithCollisions(forword);
-           }else if(this.rightState==false&&this.leftState==true){
-               this.display.cameraBox.rotation.y-=0.01*this.times;
-              var forword=new BABYLON.Vector3(-this.character.right.x*2*this.times*this.flySpeed,-this.character.right.y*2*this.times*this.flySpeed,-this.character.right.z*2*this.times*this.flySpeed)
-     
-              this.character.moveWithCollisions(forword);
-           } */
            
 
           
@@ -672,9 +643,6 @@ export class FlyCon{
     }
 
 
-    private leftState=false;
-    private rightState=false;
-
 
     private keyevent():void{
 
@@ -690,10 +658,9 @@ export class FlyCon{
      
         var _qljstate=true;
 
-        this.scene.beginAnimation(this.scene.getMeshByName("前轮"), 0, 0.7916666865348816, false);
-        this.scene.beginAnimation(this.scene.getMeshByName("后轮"), 0, 0.7916666865348816, false);
-        this.scene.beginAnimation(this.scene.getMeshByName("后轮.001"), 0, 0.7916666865348816, false);
-
+        this.scene.beginAnimation(this.scene.getMeshByName("前轮"),  0.7916666865348816,1.625, false);
+        this.scene.beginAnimation(this.scene.getMeshByName("后轮"),  0.7916666865348816,1.625, false);
+        this.scene.beginAnimation(this.scene.getMeshByName("后轮.001"),  0.7916666865348816,1.625, false);
 
         document.addEventListener("keydown",(e)=>{
            
@@ -711,34 +678,6 @@ export class FlyCon{
                    this.scene.beginAnimation(this.scene.getMeshByName("后轮"),  0.7916666865348816,1.625, false);
                    this.scene.beginAnimation(this.scene.getMeshByName("后轮.001"),  0.7916666865348816,1.625, false);
                 }
-              }
-            　if (e.keyCode == 65) {
-                // this.display.cameraBox.rotation.y-=0.6
-                // console.log(55666)
-                this.leftState=true;
-                this.rightState=false;
-              }
-
-            　if (e.keyCode == 68) {
-                this.leftState=false;
-                this.rightState=true;
-               //  this.display.cameraBox.rotation.y+=0.1
-              }
-    　　     // }
-        })
-
-        document.addEventListener("keyup",(e)=>{
-           
-            　if (e.keyCode == 65) {
-                // this.display.cameraBox.rotation.y-=0.6
-                // console.log(55666)
-                this.leftState=false;
-               
-              }
-
-            　if (e.keyCode == 68) {
-                this.rightState=false;
-               //  this.display.cameraBox.rotation.y+=0.1
               }
     　　     // }
         })

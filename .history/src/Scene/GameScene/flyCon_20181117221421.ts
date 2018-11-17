@@ -408,7 +408,7 @@ export class FlyCon{
           
 
 
-           /* if(this.rightState==true&&this.leftState==false){
+           if(this.rightState==true&&this.leftState==false){
                this.display.cameraBox.rotation.y+=0.01*this.times;
                var forword=new BABYLON.Vector3(this.character.right.x*2*this.times*this.flySpeed,this.character.right.y*2*this.times*this.flySpeed,this.character.right.z*2*this.times*this.flySpeed)
      
@@ -418,7 +418,7 @@ export class FlyCon{
               var forword=new BABYLON.Vector3(-this.character.right.x*2*this.times*this.flySpeed,-this.character.right.y*2*this.times*this.flySpeed,-this.character.right.z*2*this.times*this.flySpeed)
      
               this.character.moveWithCollisions(forword);
-           } */
+           }
            
 
           

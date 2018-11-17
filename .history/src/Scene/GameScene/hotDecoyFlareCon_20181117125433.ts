@@ -172,10 +172,10 @@ export class HotDecoyFlareCon{
                              }
 
                              i++
-                             if(i>=10){
+                             if(i>=5){
                                 clearInterval(cleard)
                              }
-                        },150)
+                        },300)
             　　      }
                 })
             

@@ -6,13 +6,13 @@ import {AssetsManager,particleCon} from "../../public"
 import {SceneManager} from "../../public"
 import {Func} from "../../public"
 
-export class HotDecoyFlareCon{
+export class NpcCon{
 
-    private static instance: HotDecoyFlareCon;
+    private static instance: NpcCon;
 
-    public static get ins(): HotDecoyFlareCon {
+    public static get ins(): NpcCon {
         if (!this.instance) {
-            this.instance = new HotDecoyFlareCon();
+            this.instance = new NpcCon();
         }
         return this.instance;
     }

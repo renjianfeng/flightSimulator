@@ -107,7 +107,7 @@ export class HotDecoyFlareCon{
 
         //创建子弹列表
         for(var i=0;i<=10;i++){
-            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  1, diameterY: 1, diameterZ: 1}, this.scene);
+            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  2, diameterY: 2, diameterZ: 2}, this.scene);
             this.bullets[i].lifeState=false;
             this.bullets[i].isPickable=false;
             this.bullets[i].material=this.display.freeMateial;
@@ -172,10 +172,10 @@ export class HotDecoyFlareCon{
                              }
 
                              i++
-                             if(i>=10){
+                             if(i>=5){
                                 clearInterval(cleard)
                              }
-                        },150)
+                        },300)
             　　      }
                 })
             

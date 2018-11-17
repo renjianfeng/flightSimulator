@@ -60,7 +60,14 @@ export class HotDecoyFlareCon{
 
     //创建UI
     private creatUI(){
-      
+        this.starUi = new BABYLON.GUI.Rectangle();
+        this.starUi.width = "30px";
+        this.starUi.height = "30px";
+        this.starUi.alpha=0.8;
+        this.starUi.thickness = 0;
+        this.display.advancedTexture.addControl( this.starUi);
+        this.image2 = new BABYLON.GUI.Image("but", AssetsManager.ins.resourceObject["images"]["gameScene"]["jiantou3"].src);
+        this.starUi.addControl(this.image2)
     }
 
     //初始化
@@ -107,7 +114,7 @@ export class HotDecoyFlareCon{
 
         //创建子弹列表
         for(var i=0;i<=10;i++){
-            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  1, diameterY: 1, diameterZ: 1}, this.scene);
+            this.bullets[i]= BABYLON.MeshBuilder.CreateSphere("frees", {diameterX:  2, diameterY: 2, diameterZ: 2}, this.scene);
             this.bullets[i].lifeState=false;
             this.bullets[i].isPickable=false;
             this.bullets[i].material=this.display.freeMateial;
@@ -172,10 +179,10 @@ export class HotDecoyFlareCon{
                              }
 
                              i++
-                             if(i>=10){
+                             if(i>=5){
                                 clearInterval(cleard)
                              }
-                        },150)
+                        },300)
             　　      }
                 })
             
