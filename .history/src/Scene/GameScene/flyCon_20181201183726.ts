@@ -263,6 +263,26 @@ export class FlyCon{
 
         BoomCon.ins.init(this.display)
 
+       // this.sayWarning()
+
+       /*  setTimeout(()=>{
+            this.musics.zhanji.play()
+            console.log("this.musics.zhanji")
+            console.log(this.musics.zhanji)
+            this.musics.zhanji.addEventListener("progress",()=>{
+                if(this.musics.zhanji.currentTime==10){
+                    this.musics.zhanji.currentTime=6
+                }
+            })
+        },6000) */
+      //  currentTime=10
+
+        /* this.musics.zhanji.addEventListener("progress",()=>{
+            if(this.musics.zhanji.currentTime==10){
+                this.musics.zhanji.currentTime=6
+            }
+        }) */
+
           //获得位置
           var origin = this.display.cameraBox.position;
     

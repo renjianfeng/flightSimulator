@@ -111,7 +111,7 @@ export class ExGameSceneCon extends GameScenes{
         FlyCon.ins.init(this.display)
         //安装子弹系统
         FireCon.ins.init(this.display)
-     //   NpcCon.ins.init(this.display)
+        NpcCon.ins.init(this.display)
         HotDecoyFlareCon.ins.init(this.display)
         MissileCon.ins.init(this.display)
 
@@ -121,36 +121,20 @@ export class ExGameSceneCon extends GameScenes{
             mesh.checkCollisions = false;;
         })
 
-        var probe = new BABYLON.ReflectionProbe("main", 60, this.scene);
-      
+        var probe = new BABYLON.ReflectionProbe("main", 64, this.scene);
         probe.renderList.push( this.scene.getMeshByName("default"));
         probe.renderList.push(this.scene.getMeshByName("skySphere"));
-     //   probe.refreshRate = BABYLON.RenderTargetTexture.REFRESHRATE_RENDER_ONCE;   
+      //  probe.refreshRate = BABYLON.RenderTargetTexture.REFRESHRATE_RENDER_ONCE;   
         probe.attachToMesh(this.display.cameraBox);
 
-        var renderTargetTexture = new BABYLON.RenderTargetTexture('tex', 512, scene);
-        renderTargetTexture.activeCamera = this.display.camera4;
-        renderTargetTexture.vScale=18;
-        renderTargetTexture.uScale=8;
-        renderTargetTexture.uOffset=1
-        renderTargetTexture.vOffset=-0.85
-        
-        this.scene.meshes.forEach((mesh)=>{
-            renderTargetTexture.renderList.push(mesh);
-        })
-        scene.registerBeforeRender( ()=> {
-            renderTargetTexture.render();
-        })
-
-     //   this.scene.environmentTexture=AssetsManager.ins.resourceObject["cubeTextures"]["gameScene"]["skybox"];
-     var cubeTextures =AssetsManager.ins.resourceObject["cubeTextures"]["gameScene"]["skybox"];
-     //   this.scene.workerCollisions=true;
+        this.scene.environmentTexture=AssetsManager.ins.resourceObject["cubeTextures"]["gameScene"]["skybox"];
+        this.scene.workerCollisions=true;
         this.scene.getMeshByName("__root__").getChildMeshes(false,(mesh)=>{
             console.log(mesh)
             console.log(mesh.name)
             mesh.isPickable=false;
-            this.display.shadowGenerator.getShadowMap().renderList.push(mesh);
-            mesh.receiveShadows = true;
+         //   this.display.shadowGenerator.getShadowMap().renderList.push(mesh);
+        //    mesh.receiveShadows = true;
             if(mesh.name=="Glass"){
                 mesh.isBlocker=false;
             }else{
@@ -160,27 +144,11 @@ export class ExGameSceneCon extends GameScenes{
                 mesh.material.backFaceCulling=false;
                 console.log("mesh.material")
                 console.log(mesh.material)
-               // mesh.material.baseTexture=this.scene.environmentTexture;
-               // mesh.material.environmentTexture= probe.cubeTextures;
-                mesh.material.reflectionTexture= probe.cubeTexture;
-             //   mesh.material.reflectionTexture.level=.3
-             //   mesh.material.reflectivityTexture= probe.cubeTexture;
-             //   mesh.material.linkRefractionWithTransparency = true
-                console.log("mesh.material.reflectionTexture")
-                console.log( mesh.material.reflectionTexture)
-
-                if(mesh.name=="Glass"){
-                    mesh.material.reflectionTexture.level=1
-                }else{
-                    mesh.material.reflectionTexture.level=.3
-                }
-                
-                
-           //     mesh.material.reflectionTexture= renderTargetTexture;
-              //  mesh.material.environmentTexture= this.scene.environmentTexture;
+                mesh.material.reflectionTexture= this.scene.environmentTexture;
+                mesh.material.environmentTexture= this.scene.environmentTexture;
                // mesh.material.usePhysicalLightFalloff = false;
                // mesh.material._usePhysicalLightFalloff = false;
-              //  mesh.material._environmentIntensity = 0.8;
+               // mesh.material._environmentIntensity = 0.8;
             }
         })
 
@@ -197,7 +165,16 @@ export class ExGameSceneCon extends GameScenes{
         this.scene.getMeshByName("default").material.diffuseTexture.vScale=4;
         this.display.cameraBox.position.y=-10;
 
-      
+        var renderTargetTexture = new BABYLON.RenderTargetTexture('tex', 512, scene);
+        renderTargetTexture.activeCamera = this.display.camera4;
+        renderTargetTexture.vScale=18;
+        renderTargetTexture.uScale=8;
+        renderTargetTexture.uOffset=1
+        renderTargetTexture.vOffset=-0.85
+        
+        this.scene.meshes.forEach((mesh)=>{
+            renderTargetTexture.renderList.push(mesh);
+        })
        
         
 
@@ -214,7 +191,10 @@ export class ExGameSceneCon extends GameScenes{
         this.display.jingzi.material=sm
         //this.scene.getMeshByName("jinzi").scaling.x=-0.1
 
-     
+        scene.registerBeforeRender( ()=> {
+            renderTargetTexture.render();
+        })
+       
         console.log("this.display.jingzi.material")
       //  console.log(this.display.jingzi.material)
        // this.display.camera.target=this.display.cameraBox.position;
@@ -247,7 +227,7 @@ mirror.position = new BABYLON.Vector3(0, -800, 0); */
         this.times= 60/SceneManager.ins.engine.getFps();
         FireCon.ins.update(this.times)
         FlyCon.ins.update(this.times)
-      //  NpcCon.ins.update(this.times)
+        NpcCon.ins.update(this.times)
         HotDecoyFlareCon.ins.update(this.times)
         MissileCon.ins.update(this.times)
         if(this.display.lens3.isOccluded){

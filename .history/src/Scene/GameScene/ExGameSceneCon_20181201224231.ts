@@ -121,7 +121,7 @@ export class ExGameSceneCon extends GameScenes{
             mesh.checkCollisions = false;;
         })
 
-        var probe = new BABYLON.ReflectionProbe("main", 60, this.scene);
+        var probe = new BABYLON.ReflectionProbe("main", 512, this.scene);
       
         probe.renderList.push( this.scene.getMeshByName("default"));
         probe.renderList.push(this.scene.getMeshByName("skySphere"));

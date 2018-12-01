@@ -111,7 +111,7 @@ export class ExGameSceneCon extends GameScenes{
         FlyCon.ins.init(this.display)
         //安装子弹系统
         FireCon.ins.init(this.display)
-     //   NpcCon.ins.init(this.display)
+        NpcCon.ins.init(this.display)
         HotDecoyFlareCon.ins.init(this.display)
         MissileCon.ins.init(this.display)
 
@@ -121,11 +121,10 @@ export class ExGameSceneCon extends GameScenes{
             mesh.checkCollisions = false;;
         })
 
-        var probe = new BABYLON.ReflectionProbe("main", 60, this.scene);
-      
+        var probe = new BABYLON.ReflectionProbe("main", 64, this.scene);
         probe.renderList.push( this.scene.getMeshByName("default"));
         probe.renderList.push(this.scene.getMeshByName("skySphere"));
-     //   probe.refreshRate = BABYLON.RenderTargetTexture.REFRESHRATE_RENDER_ONCE;   
+        probe.refreshRate = BABYLON.RenderTargetTexture.REFRESHRATE_RENDER_ONCE;   
         probe.attachToMesh(this.display.cameraBox);
 
         var renderTargetTexture = new BABYLON.RenderTargetTexture('tex', 512, scene);
@@ -143,8 +142,7 @@ export class ExGameSceneCon extends GameScenes{
         })
 
      //   this.scene.environmentTexture=AssetsManager.ins.resourceObject["cubeTextures"]["gameScene"]["skybox"];
-     var cubeTextures =AssetsManager.ins.resourceObject["cubeTextures"]["gameScene"]["skybox"];
-     //   this.scene.workerCollisions=true;
+        this.scene.workerCollisions=true;
         this.scene.getMeshByName("__root__").getChildMeshes(false,(mesh)=>{
             console.log(mesh)
             console.log(mesh.name)
@@ -161,22 +159,7 @@ export class ExGameSceneCon extends GameScenes{
                 console.log("mesh.material")
                 console.log(mesh.material)
                // mesh.material.baseTexture=this.scene.environmentTexture;
-               // mesh.material.environmentTexture= probe.cubeTextures;
-                mesh.material.reflectionTexture= probe.cubeTexture;
-             //   mesh.material.reflectionTexture.level=.3
-             //   mesh.material.reflectivityTexture= probe.cubeTexture;
-             //   mesh.material.linkRefractionWithTransparency = true
-                console.log("mesh.material.reflectionTexture")
-                console.log( mesh.material.reflectionTexture)
-
-                if(mesh.name=="Glass"){
-                    mesh.material.reflectionTexture.level=1
-                }else{
-                    mesh.material.reflectionTexture.level=.3
-                }
-                
-                
-           //     mesh.material.reflectionTexture= renderTargetTexture;
+                mesh.material.environmentTexture= probe;
               //  mesh.material.environmentTexture= this.scene.environmentTexture;
                // mesh.material.usePhysicalLightFalloff = false;
                // mesh.material._usePhysicalLightFalloff = false;
@@ -247,7 +230,7 @@ mirror.position = new BABYLON.Vector3(0, -800, 0); */
         this.times= 60/SceneManager.ins.engine.getFps();
         FireCon.ins.update(this.times)
         FlyCon.ins.update(this.times)
-      //  NpcCon.ins.update(this.times)
+        NpcCon.ins.update(this.times)
         HotDecoyFlareCon.ins.update(this.times)
         MissileCon.ins.update(this.times)
         if(this.display.lens3.isOccluded){

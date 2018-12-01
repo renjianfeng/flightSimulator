@@ -263,19 +263,26 @@ export class FlyCon{
 
         BoomCon.ins.init(this.display)
 
-          //获得位置
-          var origin = this.display.cameraBox.position;
-    
-          //创建向前矢量
-          var forward = new BABYLON.Vector3(0,0,1);		
-          forward = Func.ins.vecToLocal(forward, this.display.cameraBox);
-      
-          //创建方向
-          var direction = forward.subtract(origin);
-          direction = BABYLON.Vector3.Normalize(direction);
-      
-          //创建属性
-          this.ray = new BABYLON.Ray(origin, direction, 300);
+       // this.sayWarning()
+
+       /*  setTimeout(()=>{
+            this.musics.zhanji.play()
+            console.log("this.musics.zhanji")
+            console.log(this.musics.zhanji)
+            this.musics.zhanji.addEventListener("progress",()=>{
+                if(this.musics.zhanji.currentTime==10){
+                    this.musics.zhanji.currentTime=6
+                }
+            })
+        },6000) */
+      //  currentTime=10
+
+        /* this.musics.zhanji.addEventListener("progress",()=>{
+            if(this.musics.zhanji.currentTime==10){
+                this.musics.zhanji.currentTime=6
+            }
+        }) */
+
     }
 
 

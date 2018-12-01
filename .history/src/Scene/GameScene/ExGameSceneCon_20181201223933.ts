@@ -111,7 +111,7 @@ export class ExGameSceneCon extends GameScenes{
         FlyCon.ins.init(this.display)
         //安装子弹系统
         FireCon.ins.init(this.display)
-     //   NpcCon.ins.init(this.display)
+        NpcCon.ins.init(this.display)
         HotDecoyFlareCon.ins.init(this.display)
         MissileCon.ins.init(this.display)
 
@@ -121,7 +121,7 @@ export class ExGameSceneCon extends GameScenes{
             mesh.checkCollisions = false;;
         })
 
-        var probe = new BABYLON.ReflectionProbe("main", 60, this.scene);
+        var probe = new BABYLON.ReflectionProbe("main", 512, this.scene);
       
         probe.renderList.push( this.scene.getMeshByName("default"));
         probe.renderList.push(this.scene.getMeshByName("skySphere"));
@@ -247,7 +247,7 @@ mirror.position = new BABYLON.Vector3(0, -800, 0); */
         this.times= 60/SceneManager.ins.engine.getFps();
         FireCon.ins.update(this.times)
         FlyCon.ins.update(this.times)
-      //  NpcCon.ins.update(this.times)
+        NpcCon.ins.update(this.times)
         HotDecoyFlareCon.ins.update(this.times)
         MissileCon.ins.update(this.times)
         if(this.display.lens3.isOccluded){
