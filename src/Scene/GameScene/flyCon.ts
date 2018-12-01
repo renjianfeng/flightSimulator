@@ -8,6 +8,7 @@ import {SceneManager} from "../../public"
 import {Func} from "../../public"
 import {BoomCon} from "./boomCon"
 import { Vector3 } from "babylonjs";
+import {Language} from "./language"
 
 export class FlyCon{
 
@@ -475,7 +476,8 @@ export class FlyCon{
            this.pickCall((_jl)=>{
                 this.warnings[0]=1
                // console.log("下方危险"+_jl)
-                this.warningText="Warning, Bottom collision，"+parseInt(_jl.toString())+" metres away";
+                //this.warningText="Warning, Bottom collision，"+parseInt(_jl.toString())+" metres away";
+                this.warningText=Language.ins.languageList.dmzj[localStorage.language].replace("${0}",parseInt(_jl.toString()));
            },()=>{
               // console.log("前方")
                this.warnings[0]=0
@@ -488,7 +490,8 @@ export class FlyCon{
              this.pickCall((_jl)=>{
                 this.warnings[1]=1
                   //  console.log("上方危险"+_jl)
-                    this.warningText="Warning, Top collision，"+parseInt(_jl.toString())+" metres away";
+                   // this.warningText="Warning, Top collision，"+parseInt(_jl.toString())+" metres away";
+                    this.warningText=Language.ins.languageList.dbzj[localStorage.language].replace("${0}",parseInt(_jl.toString()));
                   //  this.musics.win.setVolume(1)
             },()=>{
               //  console.log("上方")
@@ -501,8 +504,8 @@ export class FlyCon{
             this.pickCall((_jl)=>{
                 this.warnings[2]=1
                  //   console.log("前方危险"+_jl)
-                    this.warningText="Warning, Front  collision，"+parseInt(_jl.toString())+" metres away";
-                   // this.musics.win.setVolume(1)
+                 this.warningText=Language.ins.languageList.qfzj[localStorage.language].replace("${0}",parseInt(_jl.toString()));
+                 // this.musics.win.setVolume(1)
             },()=>{
                 this.warnings[2]=0
                },this.obstacleCount)
@@ -513,8 +516,8 @@ export class FlyCon{
               this.pickCall((_jl)=>{
                 this.warnings[3]=1
                  //   console.log("左方危险"+_jl)
-                    this.warningText="Warning, Left collision，"+parseInt(_jl.toString())+" metres away";
-                  //  this.musics.win.setVolume(1)
+                 this.warningText=Language.ins.languageList.zfzj[localStorage.language].replace("${0}",parseInt(_jl.toString()));
+                 //  this.musics.win.setVolume(1)
             },()=>{
                 this.warnings[3]=0
                },this.obstacleCount)
@@ -526,8 +529,8 @@ export class FlyCon{
             this.pickCall((_jl)=>{
                 this.warnings[4]=1
                   //  console.log("右方危险"+_jl)
-                    this.warningText="Warning, Right collision，"+parseInt(_jl.toString())+" metres away";
-                   // this.musics.win.setVolume(1)
+                  this.warningText=Language.ins.languageList.yfzj[localStorage.language].replace("${0}",parseInt(_jl.toString()));
+                  // this.musics.win.setVolume(1)
             },()=>{
                 this.warnings[4]=0
                },this.obstacleCount)
@@ -627,7 +630,9 @@ export class FlyCon{
                    localStorage.msg=this.warningText
                    if(this.warningText!=""){
                     var msg = new SpeechSynthesisUtterance(this.warningText);
-                    msg.lang="en";
+                    if(localStorage.language!="chinese"){
+                        msg.lang="en";
+                    }
                     window.speechSynthesis.speak(msg);
                    }
                    this.tipsText.text=localStorage.msg;

@@ -69,6 +69,7 @@ export class MissileCon{
         this.image2 = new BABYLON.GUI.Image("but", AssetsManager.ins.resourceObject["images"]["gameScene"]["jiantou3"].src);
         this.starUi.addControl(this.image2)
     }
+    private boomSprite;
 
     //初始化
     public init(display){
@@ -110,7 +111,7 @@ export class MissileCon{
           this.particleeExhaust.updateSpeed = 0.5;
 
 
-         
+          this.boomSprite=new BABYLON.SpriteManager("treesManager", AssetsManager.ins.resourceObject["images"]["gameScene"]["boom3"].src, 10, {width: 200, height: 200},this.scene);
 
         //创建子弹列表
         for(var i=0;i<=10;i++){
@@ -141,11 +142,10 @@ export class MissileCon{
 
         //创建爆炸列表
         for(var i=0;i<=10;i++){
-            this.booms[i]= BABYLON.MeshBuilder.CreateSphere("boom", {diameter: 10}, this.scene);
-            this.booms[i].boom=new TWEEN.Tween(this.booms[i].scaling);
+            this.booms[i] = new BABYLON.Sprite("player", this.boomSprite);
             this.booms[i].lifeState=false;
             this.booms[i].isPickable=false;
-            this.booms[i].material=this.display.boomMateial;
+            this.booms[i].size = 0;
             this.bullets[i].checkCollisions = false;;
         }
 
@@ -212,18 +212,14 @@ export class MissileCon{
 
 
     private boom(i,free){
+        this.booms[i].isVisible=true;
         this.booms[i].position=new BABYLON.Vector3(free.position.x,free.position.y,free.position.z);
-            this.booms[i].scaling.x=10;
-            this.booms[i].scaling.y=10;
-            this.booms[i].scaling.z=10;
-            this.booms[i].boom.to({ x:1 ,y:1,z:1}, 1000);
-            this.booms[i].boom.start();
-            this.booms[i].boom.onComplete(()=>{
-            this.booms[i].scaling.x=0;
-            this.booms[i].scaling.y=0;
-            this.booms[i].scaling.z=0;
-           // this.tailFlowers[i].stop()
-        })
+        this.booms[i].size = 160;
+      
+        this.booms[i].playAnimation(0, 36, false, 10,()=>{
+            this.booms[i].size = 0;
+            this.booms[i].isVisible=true;
+        });
     }
 
     //更新方法

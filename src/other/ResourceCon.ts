@@ -47,6 +47,7 @@ export class ResourceCon {
                 {name:"lens2", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"lens4.jpg"},
                 {name:"ico_b", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"ico_b.png"},
                 {name:"ico_bg", filePath:this.pathFirst+"src/Resource/gameScene/images/ui/", fileName:"ico_bg.png"},
+                {name:"boom3", filePath:this.pathFirst+"src/Resource/gameScene/textures/", fileName:"boom3.png"},
             ],
             models:[
                

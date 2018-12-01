@@ -14,6 +14,8 @@ import { FlyCon } from './flyCon';
 import { NpcCon } from './NpcCon';
 import { HotDecoyFlareCon } from './hotDecoyFlareCon';
 import { MissileCon } from './MissileCon';
+import {Language} from "./language"
+
 
 
 export class ExGameSceneCon extends GameScenes{
@@ -55,15 +57,18 @@ export class ExGameSceneCon extends GameScenes{
         this.scene=SceneManager.ins.scene;
         this.display=ExGameScene.ins.display;
 
+        localStorage.language="chinese";
+
         //window.speechSynthesis.stop();
        // msg.volume=4;
        // console.log(msg);
 
        setTimeout(()=>{
-        localStorage.msg="Hello, Welcome to fly the Typhoon fighter. \n You can shoot by the left button of the mouse,\n Change the view by right button, \nand control the flight by dragging the mouse. \n \nYou can press the space bar and drag the mouse to view the free view.\n You can release the jammer by pressing the 'E' key."
-
+        localStorage.msg=Language.ins.languageList.indexTips[localStorage.language];
         var msg = new SpeechSynthesisUtterance(localStorage.msg);
-        msg.lang="en";
+        if(localStorage.language!="chinese"){
+            msg.lang="en";
+        }
        
            window.speechSynthesis.speak(msg);
        },1000)

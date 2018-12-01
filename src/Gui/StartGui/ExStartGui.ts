@@ -168,7 +168,6 @@ export class ExStartGui{
             <button class="button-play" id="button_play">Play</button>
            
             </div>
-           
         `;
 
         var viewNode = document.createElement("div");
