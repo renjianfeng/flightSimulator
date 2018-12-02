@@ -59,7 +59,8 @@ export class ExStartGui{
                 top: 50%;
                 left:50%;
                 display: block;
-                color: #ffffff;
+                background: #ffffff;
+                color: #82bab3;
                 border: 0px solid ;
                 font-size: 24px;
                 border-radius: 5px;
@@ -97,19 +98,19 @@ export class ExStartGui{
             }
             
             .map-list{
-                margin-top:44px;
+                margin-top:-30px;
                 position: relative;
                 top: -30px;
             }
             .map-list select{
                 background: transparent;
                 padding: 7px;
-                color: #cccccc;
+                color: #82bab3;
                 position: relative;
                 top: -2px;
                 font-size: 18px;
                 border-radius: 5px;
-                border: 1px solid #ffffff;
+                border: 1px solid #82bab3;
             }
             .box-tip{
                 background: rgba(0,0,0,0.2);
@@ -148,29 +149,36 @@ export class ExStartGui{
             }
             .logo{
                 position: fixed;
-                top: 40%;
-                left: 50%;
-                width: 441px;
-                height: 117px;
-                margin-left: -220.5px;
-                background-size: 100% 100%;
-                z-index: 9;
+                top: 5%;
+                left:50%;
+                width:500px;
+                height:160px;
+                margin-left:-250px;
+               
+                background-size:100% 100%;
             }
 
             </style>
-
-            <div class="logo" id="LOGO"></div>
         
             <div class="game-bg" id="GAME_BG">
                 <div class="weather-config">
                     <div class="map-list">
                         <lable>
-                        Language : <select id="Language_List" name="mapList">
-                                <option value="chinese">中文简体</option>
-                                <option value="english">English</option>
+                        MAP : <select id="MAP_LIST" name="mapList">
+                                <option value="{map:1,carposition:{ x:0,y:-60,z:160}}">The hills</option>
+                                <option value="{map:2,carposition:{ x:0,y:151,z:226}}">Cliff valley</option>
+                                <option value="{map:3,carposition:{ x:0,y:50,z:140}}">The lakes</option>
                             </select>
                         </lable>
+                
                     </div>
+                    <ul>
+                    <li id="RAIN_DAY" class="we-active">大雨磅礴<br><span class="yw-text">The heavy rain made</span></li>
+                    <li id="SUNNY_DAY">晴空万里<br><span class="yw-text">a bright sky</span></li>
+                    <li id="AFTERNOON_DAY">晚霞时分<br><span class="yw-text">An evening at the</span></li>
+                    <li id="NIGHT_DAY">漫漫长夜<br><span class="yw-text">All night long</span></li>
+                    </ul>
+            
                 </div>
             <div>
             <button class="about-btn" onclick="window.location.href='https://github.com/renjianfeng/flightSimulator'">About The Author And Github</button>

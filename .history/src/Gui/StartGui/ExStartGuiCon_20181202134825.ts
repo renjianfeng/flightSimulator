@@ -77,7 +77,7 @@ export class ExStartGuiCon extends StartGui{
         })
  */
         document.getElementById("GAME_BG").style.backgroundImage="url("+AssetsManager.ins.resourceObject["images"]["gameScene"]["map1"].src+")"
-        document.getElementById("LOGO").style.backgroundImage="url("+AssetsManager.ins.resourceObject["images"]["gameScene"]["logo"].src+")"
+        //document.getElementById("LOGO").style.backgroundImage="url("+AssetsManager.ins.resourceObject["images"]["gameScene"]["logo"].src+")"
 
         this.mapReset()
 

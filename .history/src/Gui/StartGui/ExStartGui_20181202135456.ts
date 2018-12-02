@@ -59,7 +59,7 @@ export class ExStartGui{
                 top: 50%;
                 left:50%;
                 display: block;
-                color: #ffffff;
+                color: #82bab3;
                 border: 0px solid ;
                 font-size: 24px;
                 border-radius: 5px;
@@ -104,7 +104,7 @@ export class ExStartGui{
             .map-list select{
                 background: transparent;
                 padding: 7px;
-                color: #cccccc;
+                color: #ffffff;
                 position: relative;
                 top: -2px;
                 font-size: 18px;

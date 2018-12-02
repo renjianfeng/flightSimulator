@@ -104,7 +104,7 @@ export class ExStartGui{
             .map-list select{
                 background: transparent;
                 padding: 7px;
-                color: #cccccc;
+                color: #ffffff;
                 position: relative;
                 top: -2px;
                 font-size: 18px;
