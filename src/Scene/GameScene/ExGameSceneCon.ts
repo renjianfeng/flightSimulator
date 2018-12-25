@@ -198,8 +198,8 @@ export class ExGameSceneCon extends GameScenes{
         this.scene.getMeshByName("default").isPickable=true;
         this.scene.getMeshByName("default").isBlocker=true;
         this.scene.getMeshByName("default").scaling=new BABYLON.Vector3(40,40,40);
-        this.scene.getMeshByName("default").material.diffuseTexture.uScale=4;
-        this.scene.getMeshByName("default").material.diffuseTexture.vScale=4;
+        this.scene.getMeshByName("default").material.diffuseTexture.uScale=16;
+        this.scene.getMeshByName("default").material.diffuseTexture.vScale=16;
         this.display.cameraBox.position.y=-10;
 
       
